@@ -14,7 +14,12 @@
     <%= render "partials/navbar" %>
     <%= render "partials/flash" %>
     <div class="container">
+
       <%= yield %>
+
+      <!-- Ajout de console -->
+      <% console if Rails.env.development? %>
+
     </div>
     <%= render "partials/footer" %>
   </body>

@@ -11,16 +11,15 @@
   </head>
 
   <body>
-    <%= render "partials/navbar" %>
-    <%= render "partials/flash" %>
-    <div class="container">
+  <%= render "partials/navbar" %>
+  <%= render "partials/flash" %>
 
-      <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
-      <!-- Ajout de console -->
-      <% console if Rails.env.development? %>
+  <!-- Ajout de console -->
+  <% console if Rails.env.development? %>
 
-    </div>
-    <%= render "partials/footer" %>
-  </body>
+  <%= render "partials/footer" %>
 </html>

@@ -9,9 +9,6 @@
   font-weight: 700;
 }
 
-.btn{
-  font-size: 1.2rem;
-}
 
 .background-gradient {
   background-image: linear-gradient(to top right,#ef4444, #4338ca);
@@ -27,4 +24,11 @@
     font-size: 50px;
     font-weight: 700;
   }
+
+  .flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
 }

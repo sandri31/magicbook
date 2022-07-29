@@ -47,10 +47,10 @@ class RodauthMain < Rodauth::Rails::Auth
     # two_factor_auth_return_to_requested_location? true # if using MFA
 
     # Autologin the user after they have reset their password.
-    # reset_password_autologin? true
+    reset_password_autologin? true
 
     # Delete the account record when the user has closed their account.
-    # delete_account_on_close? true
+    delete_account_on_close? true
 
     # Redirect to the app from login and registration pages if already logged in.
     # already_logged_in { redirect login_redirect }
@@ -82,20 +82,20 @@ class RodauthMain < Rodauth::Rails::Auth
 
     # ==> Flash
     # Match flash keys with ones already used in the Rails app.
-    # flash_notice_key :success # default is :notice
-    # flash_error_key :error # default is :alert
+    flash_notice_key :success # default is :notice
+    flash_error_key :error # default is :alert
 
     # Override default flash messages.
-    # create_account_notice_flash "Your account has been created. Please verify your account by visiting the confirmation link sent to your email address."
-    # require_login_error_flash "Login is required for accessing this page"
-    # login_notice_flash nil
+    create_account_notice_flash "Your account has been created. Please verify your account by visiting the confirmation link sent to your email address."
+    require_login_error_flash "Login is required for accessing this page"
+    login_notice_flash nil
 
     # ==> Validation
     # Override default validation error messages.
-    # no_matching_login_message "user with this email address doesn't exist"
-    # already_an_account_with_this_login_message "user with this email address already exists"
-    # password_too_short_message { "needs to have at least #{password_minimum_length} characters" }
-    # login_does_not_meet_requirements_message { "invalid email#{", #{login_requirement_message}" if login_requirement_message}" }
+    no_matching_login_message "user with this email address doesn't exist"
+    already_an_account_with_this_login_message "user with this email address already exists"
+    password_too_short_message { "needs to have at least #{password_minimum_length} characters" }
+    login_does_not_meet_requirements_message { "invalid email#{", #{login_requirement_message}" if login_requirement_message}" }
 
     # Change minimum number of password characters required when creating an account.
     # password_minimum_length 8

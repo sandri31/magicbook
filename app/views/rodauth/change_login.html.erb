@@ -2,8 +2,8 @@
 <% content_for :title, rodauth.change_login_page_title %>
 
 
-<div class="flex-center">
-  <div class="col-12 col-md-8 col-lg-5 p-4 p-md-5 card">
+<div class="row align-items-center mx-auto g-lg-5 py-5">
+  <div class="col-12 col-md-8 col-lg-5 p-4 p-md-5 mx-auto card">
     <h1 class="h5">Saisissez votre nouvel e-mail</h1>
       <%= form_with url: rodauth.change_login_path, method: :post, data: { turbo: false } do |form| %>
         <div class="form-group mb-3">

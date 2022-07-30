@@ -1,6 +1,6 @@
 <% content_for :title, rodauth.resend_verify_account_page_title %>
-<div class="flex-center">
-  <div class="col-12 col-md-8 col-lg-5 p-4 p-md-5 card">
+<div class="row align-items-center mx-auto g-lg-5 py-5">
+  <div class="col-12 col-md-8 col-lg-5 p-4 p-md-5 mx-auto card">
     <h1 class="h5">Envoyer à nouveau l'e-mail de vérification</h1>
     <%= form_with url: rodauth.verify_account_resend_path, method: :post, data: { turbo: false } do |form| %>
       <%== "Si vous n'avez plus l'e-mail pour vérifier le compte, vous pouvez demander qu'il vous soit renvoyé :" %>

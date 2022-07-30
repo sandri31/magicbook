@@ -17,8 +17,8 @@
             Outils
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Aléatoire</a></li>
-            <li><a class="dropdown-item" href="#">Graphique</a></li>
+            <li><a class="dropdown-item" href="#">Carte aléatoire</a></li>
+            <li><a class="dropdown-item" href="#">Graphique de prix</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Blog</a></li>
           </ul>
@@ -39,7 +39,7 @@
                 <%= link_to "Changer de mot de passe", rodauth.change_password_path, class: "dropdown-item" %>
                 <%= link_to "Changer d'email ", rodauth.change_login_path, class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
-                <%= link_to "Fermer ton compte", rodauth.close_account_path, class: "dropdown-item text-danger" %>
+                <%= link_to "supprimer mon compte", rodauth.close_account_path, class: "dropdown-item text-danger" %>
                 <%= link_to "Déconnexion", rodauth.logout_path, data: { turbo_method: :post }, class: "dropdown-item" %>
               </div>
               <!-- Ajouter condition si Admin -->

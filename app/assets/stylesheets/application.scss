@@ -43,4 +43,10 @@
     font-weight: 800;
     color: #fff;
   }
+  .py-3 {
+    .rounded {
+      width: 100%;
+    background-color: currentColor;
+    }
+  }
 }

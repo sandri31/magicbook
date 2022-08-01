@@ -86,16 +86,16 @@ class RodauthMain < Rodauth::Rails::Auth
     flash_error_key :error # default is :alert
 
     # Override default flash messages.
-    create_account_notice_flash "Your account has been created. Please verify your account by visiting the confirmation link sent to your email address."
-    require_login_error_flash "Login is required for accessing this page"
+    create_account_notice_flash "Your account has been created. Please verify your account by visiting the confirmation link sent to your email address. FR"
+    require_login_error_flash "Login is required for accessing this page FR"
     login_notice_flash nil
 
     # ==> Validation
     # Override default validation error messages.
-    no_matching_login_message "user with this email address doesn't exist"
-    already_an_account_with_this_login_message "user with this email address already exists"
-    password_too_short_message { "needs to have at least #{password_minimum_length} characters" }
-    login_does_not_meet_requirements_message { "invalid email#{", #{login_requirement_message}" if login_requirement_message}" }
+    no_matching_login_message "user with this email address doesn't exist FR"
+    already_an_account_with_this_login_message "user with this email address already exists FR"
+    password_too_short_message { "needs to have at least #{password_minimum_length} characters FR" }
+    login_does_not_meet_requirements_message { "invalid email#{", #{login_requirement_message}" if login_requirement_message} FR" }
 
     # Change minimum number of password characters required when creating an account.
     # password_minimum_length 8
@@ -112,19 +112,19 @@ class RodauthMain < Rodauth::Rails::Auth
 
     # ==> Hooks
     # Validate custom fields in the create account form.
-    # before_create_account do
-    #   throw_error_status(422, "name", "must be present") if param("name").empty?
-    # end
+    before_create_account do
+      throw_error_status(422, "name", "must be present") if param("name").empty?
+    end
 
     # Perform additional actions after the account is created.
-    # after_create_account do
-    #   Profile.create!(account_id: account_id, name: param("name"))
-    # end
+    after_create_account do
+      Profile.create!(account_id: account_id, name: param("name"))
+    end
 
     # Do additional cleanup after the account is closed.
-    # after_close_account do
-    #   Profile.find_by!(account_id: account_id).destroy
-    # end
+    after_close_account do
+      Profile.find_by!(account_id: account_id).destroy
+    end
 
     # ==> Redirects
     # Redirect to home page after logout.

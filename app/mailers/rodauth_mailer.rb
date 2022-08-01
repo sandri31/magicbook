@@ -1,4 +1,5 @@
 class RodauthMailer < ApplicationMailer
+  default from: "sandri822@hotmail.fr"
   def verify_account(name = nil, account_id, key)
     @email_link = email_link(name, :verify_account, account_id, key)
     @account = find_account(name, account_id)

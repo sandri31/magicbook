@@ -3,13 +3,10 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-
 .display-1 {
   font-size: 90px;
   font-weight: 700;
 }
-
-
 .background-gradient {
   background-image: linear-gradient(to top right,#ef4444, #4338ca);
   color: transparent;
@@ -19,20 +16,16 @@
   background-clip: text;
 }
 
-
-
 @media (max-width: 1020px) {
   .display-1 {
     font-size: 50px;
     font-weight: 700;
   }
-
   .flex-center {
     align-items: center;
     display: flex;
     justify-content: center;
   }
-
   .carousel-caption h2 {
     font-size: 14px;
     font-weight: 700;
@@ -46,7 +39,7 @@
   .py-3 {
     .rounded {
       width: 100%;
-    background-color: currentColor;
+
     }
   }
 }

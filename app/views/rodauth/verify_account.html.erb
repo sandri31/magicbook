@@ -1,6 +1,6 @@
 <% content_for :title, rodauth.verify_account_page_title %>
-<div class="flex-center">
-  <div class="col-12 col-md-8 col-lg-5 p-4 p-md-5 card">
+<div class="row align-items-center mx-auto g-lg-5 py-5">
+  <div class="col-12 col-md-8 col-lg-5 p-4 p-md-5 mx-auto card">
     <p class="mb-4">Vérifiez ce compte en cliquant sur le bouton ci-dessous :</p>
     <%= form_with url: rodauth.verify_account_path, method: :post, data: { turbo: false } do |form| %>
       <% if rodauth.verify_account_set_password? %>
@@ -19,7 +19,7 @@
         <% end %>
       <% end %>
 
-      <div class="form-group">
+      <div class="form-group ">
         <%= form.submit rodauth.verify_account_button, class: "btn btn-sm btn-dark" %>
       </div>
     <% end %>

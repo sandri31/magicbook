@@ -33,11 +33,11 @@
         </small>
       </div>
     </div>
+    <small class="text-muted text-center w-100">
+      <p class="text-muted mt-3">Vous n'avez pas encore de compte ? <%= link_to 'S\'inscrire', rodauth.create_account_path, class: "fw-bold" %></p>
+    </small>
+    <small class="text-muted text-center w-100">
+      <p class="text-muted">Besoin d'un nouveau lien pour vérifier votre compte ? <%= link_to 'Renvoyer le lien de vérification', rodauth.verify_account_resend_path, class: "fw-bold" %></p>
+    </small>
   </div>
-  <small class="text-muted text-center w-100">
-    <p class="text-muted mt-3">Vous n'avez pas encore de compte ? <%= link_to 'S\'inscrire', rodauth.create_account_path, class: "fw-bold" %></p>
-  </small>
-  <small class="text-muted text-center w-100">
-    <p class="text-muted">Besoin d'un nouveau lien pour vérifier votre compte ? <%= link_to 'Renvoyer le lien de vérification', rodauth.verify_account_resend_path, class: "fw-bold" %></p>
-  </small>
 </div>

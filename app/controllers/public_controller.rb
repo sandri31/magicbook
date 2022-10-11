@@ -6,4 +6,6 @@ class PublicController < ApplicationController
   def about; end
 
   def terms; end
+
+  def random; end
 end

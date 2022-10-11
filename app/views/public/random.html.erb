@@ -1,0 +1,18 @@
+<!-- Recherche une carte aléatoire avec https://api.scryfall.com/cards/random -->
+<section class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Recherche une carte Magic de façon aléatoire</h1>
+        <p class="text-center">Clique sur le bouton pour obtenir une carte aléatoire</p>
+        <div class="text-center">
+          <%= link_to "Obtenir une carte aléatoire", random_path, class: "btn btn-primary" %>
+          <%= link_to "Obtenir une carte aléatoire en français", random_path(lang: "fr"), class: "btn btn-primary" %>
+        </div>
+        <!-- avec https://api.scryfall.com/cards/random -->
+        <div class="text-center">
+          <img src="<%= @card.image_uris.normal %>" alt="<%= @card.name %>" class="img-fluid">
+      </div>
+    </div>
+  </div>
+</section>

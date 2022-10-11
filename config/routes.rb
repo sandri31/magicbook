@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   root 'public#index'
   get 'about', to: 'public#about'
   get 'terms', to: 'public#terms'
+  get 'random', to: 'public#random'
 end

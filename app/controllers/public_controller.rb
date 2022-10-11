@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PublicController < ApplicationController
-  def home; end
+  def index; end
 
   def about; end
 

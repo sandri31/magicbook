@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :cards do
     post :search, on: :collection
   end
-  get 'public/home'
-  get 'public/about'
-  get 'public/terms'
 
-  root 'public#home'
+  # Public pages
+  get 'public/index'
+  root 'public#index'
+  get 'about', to: 'public#about'
+  get 'terms', to: 'public#terms'
 end

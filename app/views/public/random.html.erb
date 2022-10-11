@@ -6,12 +6,24 @@
         <h1 class="text-center">Recherche une carte Magic de façon aléatoire</h1>
         <p class="text-center">Clique sur le bouton pour obtenir une carte aléatoire</p>
         <div class="text-center">
-          <%= link_to "Obtenir une carte aléatoire", random_path, class: "btn btn-primary" %>
-          <%= link_to "Obtenir une carte aléatoire en français", random_path(lang: "fr"), class: "btn btn-primary" %>
+          <!-- lorsque j'appuie sur le bouton recharge la page -->
+          <button class="btn btn-primary" onclick="window.location.reload()">Recherche une carte aléatoire</button>
         </div>
-        <!-- avec https://api.scryfall.com/cards/random -->
+        <!-- Afficher la carte random en taille normal en français avec highres_image = true -->
+        <div class="text-center mt-3">
+          <% if @card %>
+            <img src="<%= @card["image_uris"]["normal"] %>" alt="<%= @card["name"] %>" class="img-fluid">
+          <% end %>
+        </div>
+        <!-- Affiche la traduction de la carte en français -->
         <div class="text-center">
-          <img src="<%= @card.image_uris.normal %>" alt="<%= @card.name %>" class="img-fluid">
+          <% if @card %>
+            <p><%= @card["name"] %></p>
+            <p><%= @card["oracle_text"]["lang:fr"] %></p>
+            <p><%= @card["flavor_text"] %></p>
+          <% end %>
+        </div>
+        <%= console %>
       </div>
     </div>
   </div>

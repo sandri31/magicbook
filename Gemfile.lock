@@ -99,6 +99,8 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     digest (3.1.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
@@ -108,6 +110,11 @@ GEM
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    http-client (0.6.1)
+      http-cookie (~> 1.0, >= 1.0)
+      mime-types (~> 3.0, >= 3.0)
+    http-cookie (1.0.5)
+      domain_name (~> 0.5)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.5)
@@ -131,6 +138,9 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mime-types (3.4.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     minitest (5.16.2)
     msgpack (1.5.4)
@@ -245,6 +255,9 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.2)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -272,6 +285,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails
+  http-client
   importmap-rails
   jbuilder
   letter_opener

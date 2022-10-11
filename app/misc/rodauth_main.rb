@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class RodauthMain < Rodauth::Rails::Auth
   configure do
     # List of authentication features that are loaded.
     enable :create_account, :verify_account, :verify_account_grace_period,
-      :login, :logout, :remember,
-      :reset_password, :change_password, :change_password_notify,
-      :change_login, :verify_login_change, :close_account
+           :login, :logout, :remember,
+           :reset_password, :change_password, :change_password_notify,
+           :change_login, :verify_login_change, :close_account
 
     # See the Rodauth documentation for the list of available config options:
     # http://rodauth.jeremyevans.net/documentation.html
@@ -16,15 +18,15 @@ class RodauthMain < Rodauth::Rails::Auth
 
     before_create_account do
       # Validate presence of the name field
-      throw_error_status(422, "name", "must be present") unless param_or_nil("name")
+      throw_error_status(422, 'name', 'must be present') unless param_or_nil('name')
     end
     after_create_account do
       # Create the associated profile record with name
-      Profile.create!(account_id: account_id, name: param("name"))
+      Profile.create!(account_id:, name: param('name'))
     end
     after_close_account do
       # Delete the associated profile record
-      Profile.find_by!(account_id: account_id).destroy
+      Profile.find_by!(account_id:).destroy
     end
 
     # Specify the controller used for view rendering and CSRF verification.
@@ -86,8 +88,8 @@ class RodauthMain < Rodauth::Rails::Auth
     flash_error_key :error # default is :alert
 
     # Override default flash messages.
-    create_account_notice_flash "Votre compte a été créé. Veuillez vérifier votre compte en visitant le lien de confirmation envoyé à votre adresse e-mail."
-    require_login_error_flash "Une connexion est nécessaire pour accéder à cette page."
+    create_account_notice_flash 'Votre compte a été créé. Veuillez vérifier votre compte en visitant le lien de confirmation envoyé à votre adresse e-mail.'
+    require_login_error_flash 'Une connexion est nécessaire pour accéder à cette page.'
     login_notice_flash nil
 
     # ==> Validation
@@ -95,7 +97,9 @@ class RodauthMain < Rodauth::Rails::Auth
     no_matching_login_message "l'utilisateur avec cette adresse e-mail n'existe pas."
     already_an_account_with_this_login_message "l'utilisateur avec cette adresse e-mail existe déjà."
     password_too_short_message { "doit avoir au moins #{password_minimum_length} personnes." }
-    login_does_not_meet_requirements_message { "email invalide#{", #{login_requirement_message}" if login_requirement_message}" }
+    login_does_not_meet_requirements_message do
+      "email invalide#{", #{login_requirement_message}" if login_requirement_message}"
+    end
 
     # Change minimum number of password characters required when creating an account.
     # password_minimum_length 8
@@ -113,22 +117,22 @@ class RodauthMain < Rodauth::Rails::Auth
     # ==> Hooks
     # Validate custom fields in the create account form.
     before_create_account do
-      throw_error_status(422, "name", "must be present") if param("name").empty?
+      throw_error_status(422, 'name', 'must be present') if param('name').empty?
     end
 
     # Perform additional actions after the account is created.
     after_create_account do
-      Profile.create!(account_id: account_id, name: param("name"))
+      Profile.create!(account_id:, name: param('name'))
     end
 
     # Do additional cleanup after the account is closed.
     after_close_account do
-      Profile.find_by!(account_id: account_id).destroy
+      Profile.find_by!(account_id:).destroy
     end
 
     # ==> Redirects
     # Redirect to home page after logout.
-    logout_redirect "/"
+    logout_redirect '/'
 
     # Redirect to wherever login redirects to after account verification.
     verify_account_redirect { login_redirect }

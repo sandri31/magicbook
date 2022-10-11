@@ -18,8 +18,6 @@
   <div class="container">
     <%= yield %>
   </div>
-
-  <!-- Ajout de console -->
-
+  <%= debug(params) if Rails.env.development? %>
   <%= render "partials/footer" %>
 </html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_11_084252) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_11_102147) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -46,14 +46,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_084252) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.string "scryfall_id"
-    t.integer "quantity"
+    t.text "title"
+    t.string "description"
+    t.text "author"
+    t.integer "year"
+    t.string "image_uri"
+    t.string "categorie"
+    t.text "color"
+    t.text "note"
+    t.integer "price"
+    t.datetime "add_date"
+    t.text "lang"
+    t.boolean "foil"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "collections", force: :cascade do |t|
-    t.string "title"
+  create_table "profile_cards", force: :cascade do |t|
+    t.integer "profile_id"
+    t.integer "card_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

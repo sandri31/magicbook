@@ -1,9 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  scryfall_id: MyString
-  quantity: 1
+  title: MyText
+  description: MyString
+  author: MyText
+  year: 1
+  image_uri: MyString
+  categorie: MyString
+  color: MyText
+  note: MyText
+  price: 1
+  add_date: 2022-10-11 11:55:08
+  lang: MyText
+  foil: false
 
 two:
-  scryfall_id: MyString
-  quantity: 1
+  title: MyText
+  description: MyString
+  author: MyText
+  year: 1
+  image_uri: MyString
+  categorie: MyString
+  color: MyText
+  note: MyText
+  price: 1
+  add_date: 2022-10-11 11:55:08
+  lang: MyText
+  foil: false

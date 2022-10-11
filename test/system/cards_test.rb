@@ -14,8 +14,18 @@ class CardsTest < ApplicationSystemTestCase
     visit cards_url
     click_on "New card"
 
-    fill_in "Quantity", with: @card.quantity
-    fill_in "Scryfall", with: @card.scryfall_id
+    fill_in "Add date", with: @card.add_date
+    fill_in "Author", with: @card.author
+    fill_in "Categorie", with: @card.categorie
+    fill_in "Color", with: @card.color
+    fill_in "Description", with: @card.description
+    check "Foil" if @card.foil
+    fill_in "Image uri", with: @card.image_uri
+    fill_in "Lang", with: @card.lang
+    fill_in "Note", with: @card.note
+    fill_in "Price", with: @card.price
+    fill_in "Title", with: @card.title
+    fill_in "Year", with: @card.year
     click_on "Create Card"
 
     assert_text "Card was successfully created"
@@ -26,8 +36,18 @@ class CardsTest < ApplicationSystemTestCase
     visit card_url(@card)
     click_on "Edit this card", match: :first
 
-    fill_in "Quantity", with: @card.quantity
-    fill_in "Scryfall", with: @card.scryfall_id
+    fill_in "Add date", with: @card.add_date
+    fill_in "Author", with: @card.author
+    fill_in "Categorie", with: @card.categorie
+    fill_in "Color", with: @card.color
+    fill_in "Description", with: @card.description
+    check "Foil" if @card.foil
+    fill_in "Image uri", with: @card.image_uri
+    fill_in "Lang", with: @card.lang
+    fill_in "Note", with: @card.note
+    fill_in "Price", with: @card.price
+    fill_in "Title", with: @card.title
+    fill_in "Year", with: @card.year
     click_on "Update Card"
 
     assert_text "Card was successfully updated"

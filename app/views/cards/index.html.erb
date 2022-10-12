@@ -1,6 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Cards</h1>
+<h1>Recherche tes cartes</h1>
+
+<!-- Crée une barre de recherche stylée -->
+<div class="container">
+  <div class="row mb-5 mt-5">
+    <div class="col-8 col-lg-5 col-xxl-4 mb-4">
+      <div class="col-12 p-0 mb-3">
+        <!-- Recherche une carte via API -->
+        <%= form_tag cards_path, method: :get do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search a card", class: "form-control" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div id="cards">
   <% @cards.each do |card| %>

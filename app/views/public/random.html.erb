@@ -1,30 +1,31 @@
-<!-- Recherche une carte aléatoire avec https://api.scryfall.com/cards/random -->
-<section class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="text-center">Recherche une carte Magic de façon aléatoire</h1>
-        <p class="text-center">Clique sur le bouton pour obtenir une carte aléatoire</p>
-        <div class="text-center">
-          <!-- lorsque j'appuie sur le bouton recharge la page -->
-          <button class="btn btn-primary" onclick="window.location.reload()">Recherche une carte aléatoire</button>
+<div class="container">
+  <div class="row">
+    <div class="list-group-item">
+      <div class="d-grid gap-2 col-9 mx-auto">
+        <button class="btn btn-primary mt-5" onclick="window.location.reload()">Recherche une carte aléatoire</button>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-9 col-lg-4 col-xxl-3 mb-12 mt-5">
+          <img src="<%= @card["image_uris"]["normal"] %>" class="img-fluid">
         </div>
-        <!-- Afficher la carte random en taille normal en français avec highres_image = true -->
-        <div class="text-center mt-3">
-          <% if @card %>
-            <img src="<%= @card["image_uris"]["normal"] %>" alt="<%= @card["name"] %>" class="img-fluid">
+        <div class="col-9 col-lg-4 col-xxl-3 mb-12 mt-5">
+          <h5 class="mb-5"><%= @card["printed_name"] %></h5>
+          <% if @card["printed_text"] == nil %>
+            <p><%= @card["oracle_text"] %></p>
+          <% else %>
+            <% @card["printed_text"].split("\n").each do |text| %>
+              <p><%= text %></p>
+            <% end %>
+          <% end %>
+          <div class="text-muted"><i><%= @card["flavor_text"] %></i></div>
+          <% if @card["printed_name"] %>
+            <h6 class="text-muted mt-5"><%= @card["artist"] %></h6>
           <% end %>
         </div>
-        <!-- Affiche la traduction de la carte en français -->
-        <div class="text-center">
-          <% if @card %>
-            <p><%= @card["name"] %></p>
-            <p><%= @card["oracle_text"]["lang:fr"] %></p>
-            <p><%= @card["flavor_text"] %></p>
-          <% end %>
-        </div>
-        <%= console %>
+      </div>
+      <div class="d-grid gap-2 col-9 mx-auto">
+        <button class="btn btn-primary mt-5" onclick="window.location.reload()">Recherche une carte aléatoire</button>
       </div>
     </div>
   </div>
-</section>
+</div>

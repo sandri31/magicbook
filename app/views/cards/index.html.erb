@@ -1,29 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Recherche tes cartes</h1>
-
 <!-- Crée une barre de recherche stylée -->
 <div class="container">
-  <div class="row mb-5 mt-5">
-    <div class="col-8 col-lg-5 col-xxl-4 mb-4">
-      <div class="col-12 p-0 mb-3">
-        <!-- Recherche une carte via API -->
-        <%= form_tag cards_path, method: :get do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search a card", class: "form-control" %>
+  <div class="px-4 py-5 border-bottom">
+    <h1 class="display-5 fw-bold">Recherche tes cartes</h1>
+    <div class="row">
+      <div class="py-2">
+        <%= form_with url: search_cards_path, method: :post, data: { controller: 'search', search_target: 'form' } do |form| %>
+          <div class="pb-2 col-md-4">
+            <%= form.text_field :name, placeholder: "Nom de la carte", class: "form-control shadow-lg", data: { action: 'input->search#search' } %>
+          </div>
         <% end %>
       </div>
     </div>
+
+    <div id="resultsBlock" data-controller="search-result" data-search-result-target="resultsBlock"></div>
+
+    <div id="cards" class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-2">
+      <% @cards.each do |card| %>
+        <%= render card %>
+      <% end %>
+    </div>
   </div>
-</div>
-
-
-<div id="cards">
-  <% @cards.each do |card| %>
-    <%= render card %>
-    <p>
-      <%= link_to "Show this card", card %>
-    </p>
-  <% end %>
 </div>
 
 <%= link_to "New card", new_card_path %>

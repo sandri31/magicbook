@@ -13,11 +13,4 @@ class PublicController < ApplicationController
     res = Net::HTTP.get_response(uri)
     @card = JSON.parse(res.body)
   end
-
-  def test
-    url = 'https://api.scryfall.com/cards/search?q='
-    uri = URI(url)
-    res = Net::HTTP.get_response(uri)
-    @card = JSON.parse(res.body)
-  end
 end

@@ -20,7 +20,7 @@ gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.2.0'
 gem 'sassc-rails'
 
-gem 'http-client'
+gem 'httparty'
 gem 'rodauth-rails'
 
 group :development, :test do

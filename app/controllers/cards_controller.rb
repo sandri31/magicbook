@@ -57,6 +57,8 @@ class CardsController < ApplicationController
     end
   end
 
+  def search; end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

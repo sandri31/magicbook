@@ -57,7 +57,17 @@ class CardsController < ApplicationController
     end
   end
 
-  def search; end
+  def search
+    # Endpoint : https://api.scryfall.com
+    # Search for a card by name
+    base_uri = 'https://api.scryfall.com/cards/search?q=lang:fr+'
+
+    card_name = params[:card_name] || 'Marche'
+
+    uri = base_uri + card_name
+    response = HTTParty.get(uri)
+    @card_search = JSON.parse(response.body)
+  end
 
   private
 

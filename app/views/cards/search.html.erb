@@ -6,30 +6,66 @@
     <div class="row">
       <div class="py-2">
         <%= form_tag search_cards_path, method: :get do %>
-          <%= text_field_tag :query, params[:q], placeholder: "Recherche", class: "form-control" %>
+          <%= text_field_tag :query, params[:card_name], placeholder: "Recherche", class: "form-control", value: params[:query] %>
           <%= submit_tag "Rechercher", class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
 
-      <% if @card_search["total_cards"] == 1 %>
-        <% @card_search["data"].each do |card| %>
-          <div class="card" style="width: 18rem;">
-            <%= image_tag card["image_uris"]["normal"] %>
-          </div>
-        <% end %>
-      <% elsif @card_search["total_cards"] > 1 %>
-
-        <% @card_search["data"].each_with_index do |card, index| %>
-          <div class="card" style="width: 18rem;">
-            <%= image_tag card["image_uris"]["normal"] %>
-          </div>
-        <% end %>
-      <% end %>
+    <div class="form-group">
+      <p><%= pluralize(@cards["total_cards"], "carte") %> trouvée(s)</p>
     </div>
 
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @cards["data"].each_with_index do |card, index| %>
+        <div class="card" style="width: 18rem;">
+          <% if card["layout"] == "transform" || card["layout"] == "modal_dfc" %>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel"><%= card["card_faces"][0]["printed_name"] %></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][0]["name"] %>">
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Verso</button>
+                  </div>
+                </div>
+              </div>
+              </div>
+              <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalToggleLabel2"><%= card["card_faces"][1]["printed_name"] %></h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <img src="<%= card["card_faces"][1]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][1]["name"] %>">
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Recto</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+              <!-- Ajoute un petit rond blanc en bas à droite de l'image pour indiquer que c'est une carte transform -->
+                <img src="https://img.icons8.com/ios-filled/50/000000/rotate-left.png" style="position: absolute; top: 0; right: 0;"/>
+                <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][0]["name"] %>">
+              </a>
+            </div>
+
+          <% else %>
+            <%= image_tag card["image_uris"]["normal"] %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-<%#= link_to "New card", new_card_path %>

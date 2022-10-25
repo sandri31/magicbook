@@ -58,11 +58,16 @@ class CardsController < ApplicationController
   end
 
   def search
-    base_uri = 'https://api.scryfall.com/cards/search?&q=lang:fr+'
-    card_name = params[:card_name] || 'zénith'
-    uri = Addressable::URI.parse(base_uri + card_name)
-    response = Net::HTTP.get_response(uri)
-    @cards = JSON.parse(response.body)
+    params[:search] = if params[:search].present?
+                        [params[:search]].flatten
+                      else
+                        ['ajani']
+                      end
+    redirect_to(root_path, alert: 'Champ vide!') && return if params[:search].blank?
+
+    @parameter = params[:search]
+    @results = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{@parameter}")
+    @cards = @results
   end
 
   private

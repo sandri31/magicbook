@@ -61,7 +61,8 @@ class CardsController < ApplicationController
     params[:search] = if params[:search].present?
                         [params[:search]].flatten
                       else
-                        ['ajani']
+                        params[:search] = %w[Chandra Nissa Jace Gideon Ajani Sorin Garruk Vraska Bolas Tamiyo Tezzeret
+                                             Ugin Liliana Karn Elspeth Ashiok Kaya Samut Nixilis Tibalt Sarkhan].sample
                       end
     redirect_to(root_path, alert: 'Champ vide!') && return if params[:search].blank?
 

@@ -59,7 +59,9 @@ class CardsController < ApplicationController
 
   def search
     params[:search] = if params[:search].present?
-                        [params[:search]].flatten
+                        [params[:search]].flatten.join.unicode_normalize(:nfkd).chars.reject do |c|
+                          c =~ /[\u02B0-\u02FF\u0300-\u036F]/
+                        end.join.capitalize
                       else
                         params[:search] = %w[Chandra Nissa Jace Gideon Ajani Sorin Garruk Vraska Bolas Tamiyo Tezzeret
                                              Ugin Liliana Karn Elspeth Ashiok Kaya Samut Nixilis Tibalt Sarkhan].sample
@@ -67,8 +69,7 @@ class CardsController < ApplicationController
     redirect_to(root_path, alert: 'Champ vide!') && return if params[:search].blank?
 
     @parameter = params[:search]
-    @results = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{@parameter}")
-    @cards = @results
+    @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{@parameter}")
   end
 
   private

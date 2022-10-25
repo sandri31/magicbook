@@ -4,18 +4,18 @@
   <div class="px-4 py-5 border-bottom">
     <h1 class="display-5 fw-bold">Recherche tes cartes</h1>
     <div class="row">
+
       <div class="py-2">
         <%= form_tag search_cards_path, method: :get do %>
           <%= text_field_tag :query, params[:card_name], placeholder: "Recherche", class: "form-control", value: params[:query] %>
           <%= submit_tag "Rechercher", class: "btn btn-primary" %>
         <% end %>
       </div>
-    </div>
 
+    </div>
     <div class="form-group">
       <p><%= pluralize(@cards["total_cards"], "carte") %> trouvée(s)</p>
     </div>
-
     <div class="row row-cols-1 row-cols-md-3 g-4">
       <% @cards["data"].each_with_index do |card, index| %>
         <div class="card" style="width: 18rem;">
@@ -55,14 +55,34 @@
               </div>
 
               <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
-              <!-- Ajoute un petit rond blanc en bas à droite de l'image pour indiquer que c'est une carte transform -->
                 <img src="https://img.icons8.com/ios-filled/50/000000/rotate-left.png" style="position: absolute; top: 0; right: 0;"/>
                 <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][0]["name"] %>">
               </a>
             </div>
 
           <% else %>
-            <%= image_tag card["image_uris"]["normal"] %>
+
+            <div class="modal fade" id="exampleModalToggle<%= index %>" aria-hidden="true" aria-labelledby="exampleModalToggleLabel<%= index %>" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel<%= index %>"><%= card["printed_name"] %></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
+                  </div>
+                  <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-target="#exampleModalToggle<%= index %>" data-bs-toggle="modal">Fermer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalToggle<%= index %>">
+              <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
+            </a>
+
           <% end %>
         </div>
       <% end %>

@@ -58,12 +58,8 @@ class CardsController < ApplicationController
   end
 
   def search
-    # lang:fr+
     base_uri = 'https://api.scryfall.com/cards/search?&q=lang:fr+'
-
-    # rechercher Frappe de l'oublie
-    card_name = params[:card_name] || 'nicol'
-
+    card_name = params[:card_name] || 'zénith'
     uri = Addressable::URI.parse(base_uri + card_name)
     response = Net::HTTP.get_response(uri)
     @cards = JSON.parse(response.body)

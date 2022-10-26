@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :cards
   resources :cards do
-    post :search, on: :collection
+    collection do
+      get 'search'
+    end
   end
 
   # Public pages

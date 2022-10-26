@@ -57,6 +57,23 @@ class CardsController < ApplicationController
     end
   end
 
+  def search
+    params[:search] = if params[:search].present? && params[:search].length >= 3
+                        [params[:search]].flatten.join.unicode_normalize(:nfkd).chars.reject do |c|
+                          c =~ /[\u02B0-\u02FF\u0300-\u036F]/
+                        end.join.capitalize
+                      elsif params[:search].present? && params[:search].length < 3
+                        flash[:alert] = 'Veuillez renseigner au moins 3 caractères pour la recherche'
+                        redirect_to search_cards_path
+                      else
+                        params[:search] = %w[Chandra Nissa Jace Gideon Ajani Sorin Garruk Vraska Bolas Tamiyo Tezzeret
+                                             Ugin Liliana Karn Elspeth Ashiok Kaya Samut Nixilis Tibalt Sarkhan].sample
+                      end
+
+    @parameter = params[:search]
+    @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{@parameter}")
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

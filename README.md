@@ -1,4 +1,18 @@
 # README
+[![forthebadge](https://forthebadge.com/images/badges/made-with-ruby.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
+## Table des matières
+
+- [Apperçu du projet](#apperçu-du-projet)
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+  - [Utilisation](#utilisation)
+  - [Licence](#licence)
+  - [Contribution](#contribution)
+- [Tests](#tests)
+- [Remerciements](#remerciements)
 
 ## Aperçu du projet
 
@@ -46,6 +60,10 @@ rails server
 Vous avez la possibilité de créer un compte utilisateur, de vous connecter et de créer des decks de cartes Magic The Gathering.(en cours de développement)
 
 Ou bien, faire une simple recherche de cartes et/ou voir une des plus de 70000 cartes Magic The Gathering au hasard. Juste pour le fun.
+Le site est actualisé régulièrement, et les cartes sont ajoutées au fur et à mesure.
+Vous pouvez voir le site en production:
+  - Rendez-vous sur ce lien : [MagicBook](https://lerepairedebolas.herokuapp.com/)
+  - Enjoy !
 
 ## License
 
@@ -61,4 +79,4 @@ Les tests sont en cours de développement.
 
 ## Remerciements
 
-Merci à tous ceux qui m'aide à pousser ce projet plus loin et surtout un grand merci à Coding Accelerator.
+Merci à tous ceux qui m'aide à pousser ce projet plus loin et surtout un grand merci à [Coding Accelerator](https://joincodingnow.com/coding-accelerator).

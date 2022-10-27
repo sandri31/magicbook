@@ -21,7 +21,7 @@ Puis, il faut installer les gems nécessaires au projet.
 Il faut cloner le projet sur votre machine.
 
 ```bash
-git clone
+git clone git@github.com:Symitsh/magicbook.git
 ```
 Puis, il faut installer les gems nécessaires au projet.
 

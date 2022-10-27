@@ -80,4 +80,4 @@ Les tests sont en cours de développement.
 
 ## Remerciements
 
-Merci à tous ceux qui m'aide à pousser ce projet plus loin et surtout un grand merci à [Coding Accelerator](https://joincodingnow.com/coding-accelerator).
+Merci à tous ceux qui m'aide à pousser ce projet plus loin et surtout un grand merci à [Coding Accelerator](https://joincodingnow.com/).

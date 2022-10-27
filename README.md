@@ -5,7 +5,7 @@
 
 ## Table des matières
 
-- [Apperçu du projet](#apperçu-du-projet)
+- [Aperçu du projet](#aperçu-du-projet)
 - [Prérequis](#prérequis)
 - [Installation](#installation)
   - [Utilisation](#utilisation)
@@ -65,11 +65,11 @@ Vous pouvez voir le site en production:
   - Rendez-vous sur ce lien : [MagicBook](https://lerepairedebolas.herokuapp.com/)
   - Enjoy !
 
-## License
+## Licence
 
 Vous pouvez utiliser ce projet comme bon vous semble, mais n'oubliez pas de me citer en tant que créateur du projet de base.
 
-## Contributions
+## Contribution
 
 Les contributions sont les bienvenues. Pour des modifications majeures, merci de me contacter avant de commencer à travailler dessus.
 

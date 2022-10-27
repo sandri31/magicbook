@@ -16,8 +16,8 @@
 
 ## Aperçu du projet
 
-Ce projet est un projet personnelle(en cours de développement) de création d'un site web pour la gestion de sa propre collection de cartes Magic The Gathering.
-Le but étant de pouvoir gérer sa collection, et voir par la suite l'estimation total de celle-ci.
+Ce projet est un projet personnel(en cours de développement) de création d'un site web pour la gestion de sa propre collection de cartes Magic The Gathering.
+Le but étant de pouvoir gérer sa collection, et voir par la suite l'estimation totale de celle-ci.
 Pour cela, l'utilisateur doit pouvoir chercher une carte, et l'ajouter à sa collection.
 
 
@@ -57,11 +57,12 @@ rails server
 
 ## Utilisation
 
-Vous avez la possibilité de créer un compte utilisateur, de vous connecter et de créer des decks de cartes Magic The Gathering.(en cours de développement)
+Vous avez la possibilité de créer un compte utilisateur, de vous connecter et d'ajouter des cartes à votre collection de cartes Magic The Gathering (en cours de développement).
+Et ainsi avoir une estimation en détail de votre propre collection de cartes.
 
 Ou bien, faire une simple recherche de cartes et/ou voir une des plus de 70000 cartes Magic The Gathering au hasard. Juste pour le fun.
 Le site est actualisé régulièrement, et les cartes sont ajoutées au fur et à mesure.
-Vous pouvez voir le site en production:
+Vous pouvez voir le site en production :
   - Rendez-vous sur ce lien : [MagicBook](https://lerepairedebolas.herokuapp.com/)
   - Enjoy !
 

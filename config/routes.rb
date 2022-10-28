@@ -2,13 +2,10 @@
 
 Rails.application.routes.draw do
   resources :cards do
-    collection do
-      get 'search'
-    end
+    get 'search', to: 'cards#search', on: :collection
   end
 
   # Public pages
-  get 'public/index'
   root 'public#index'
   get 'about', to: 'public#about'
   get 'terms', to: 'public#terms'

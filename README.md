@@ -29,20 +29,17 @@ ruby -v
 rails -v
 ```
 Ici, il nous faudra ruby '3.1.2' et rails '7.0.3'.
-Puis, il faut installer les gems nécessaires au projet.
 
 ## Installation
-Il faut cloner le projet sur votre machine.
+Il faut cloner le projet sur votre machine,
+et installer les gems nécessaires au projet.
 
 ```bash
 git clone git@github.com:Symitsh/magicbook.git
-```
-Puis, il faut installer les gems nécessaires au projet.
-
-```bash
 bundle install
 ```
-Il faut créer la base de données.
+
+Il faut créer la base de données, et lancer les migrations.
 
 ```bash
 rails db:create
@@ -68,11 +65,13 @@ Vous pouvez voir le site en production :
 
 ## Licence
 
-Vous pouvez utiliser ce projet comme bon vous semble, mais n'oubliez pas de me citer en tant que créateur du projet de base.
+Vous pouvez utiliser ce projet comme bon vous semble, mais n'oubliez pas de citer mon nom et prénom (Sandri Florent) dans le README.md de votre projet.
+Et pourquoi pas de me faire un petit retour sur mon projet, ça me ferait plaisir.
 
 ## Contribution
 
-Les contributions sont les bienvenues. Pour des modifications majeures, merci de me contacter avant de commencer à travailler dessus.
+Les contributions sont les bienvenues.
+Pour des modifications majeures, merci de me contacter avant de commencer à travailler dessus.
 
 ## Tests
 

@@ -66,8 +66,8 @@ class CardsController < ApplicationController
                         flash[:alert] = 'Veuillez renseigner au moins 3 caractères pour la recherche'
                         redirect_to search_cards_path
                       else
-                        params[:search] = %w[Chandra Nissa Jace Gideon Ajani Sorin Garruk Vraska Bolas Tamiyo Tezzeret
-                                             Ugin Liliana Karn Elspeth Ashiok Kaya Samut Nixilis Tibalt Sarkhan].sample
+                        params[:search] = %w[Chandra Nissa Jace Gideon Liliana Ajani Sorin Nicol Tezzeret
+                                             Ugin Ashiok Kaya Samut Defaite Sarkhan].sample
                       end
 
     @parameter = params[:search]

@@ -3,6 +3,8 @@
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
+![ScreenMagic](https://user-images.githubusercontent.com/85675011/198518511-894576e4-4b1e-43e4-938c-3099b2c7507c.png)
+
 ## Table des matières
 
 - [Aperçu du projet](#aperçu-du-projet)
@@ -20,6 +22,7 @@ Ce projet est un projet personnel(en cours de développement) de création d'un 
 Le but étant de pouvoir gérer sa collection, et voir par la suite l'estimation totale de celle-ci.
 Pour cela, l'utilisateur doit pouvoir chercher une carte, et l'ajouter à sa collection.
 
+![ScreenMagic2](https://user-images.githubusercontent.com/85675011/198518404-3ec8a18e-a9c3-4805-8c62-c987d0e0cfa9.png)
 
 ### Prérequis
 Vérifier que vous avez la bonne version de Ruby et de Rails installé sur votre machine.
@@ -58,6 +61,9 @@ Vous avez la possibilité de créer un compte utilisateur, de vous connecter et 
 Et ainsi avoir une estimation en détail de votre propre collection de cartes.
 
 Ou bien, faire une simple recherche de cartes et/ou voir une des plus de 70000 cartes Magic The Gathering au hasard. Juste pour le fun.
+
+![ScreenMagic4](https://user-images.githubusercontent.com/85675011/198519157-d78cfd39-bd73-4d9f-b45c-4b1c5a988d86.png)
+
 Le site est actualisé régulièrement, et les cartes sont ajoutées au fur et à mesure.
 Vous pouvez voir le site en production :
   - Rendez-vous sur ce lien : [MagicBook](https://lerepairedebolas.herokuapp.com/)

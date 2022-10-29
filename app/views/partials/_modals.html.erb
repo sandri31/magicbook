@@ -3,6 +3,7 @@
     <%= render "partials/not_found" %>
   </div>
 <% else %>
+  <%= render "partials/has_more" %>
   <% @cards["data"].each_with_index do |card, index| %>
     <div class="card" style="width: 18rem;">
       <% if card["layout"] == "transform" || card["layout"] == "modal_dfc" %>
@@ -69,4 +70,5 @@
       <% end %>
     </div>
   <% end %>
+  <%= render "partials/has_more" %>
 <% end %>

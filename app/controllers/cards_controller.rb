@@ -2,6 +2,7 @@
 
 class CardsController < ApplicationController
   before_action :set_card, only: %i[show edit update destroy]
+  before_action :search_params, only: %i[search]
 
   # GET /cards or /cards.json
   def index
@@ -58,19 +59,6 @@ class CardsController < ApplicationController
   end
 
   def search
-    params[:search] = if params[:search].present? && params[:search].length >= 3
-                        [params[:search]].flatten.join.unicode_normalize(:nfkd).chars.reject do |c|
-                          c =~ /[\u02B0-\u02FF\u0300-\u036F]/
-                        end.join.capitalize
-                      elsif params[:search].present? && params[:search].length < 3
-                        flash[:alert] = 'Veuillez renseigner au moins 3 caractères pour la recherche'
-                        redirect_to search_cards_path
-                      else
-                        params[:search] = %w[Chandra Nissa Jace Gideon Liliana Ajani Sorin Nicol Tezzeret
-                                             Ugin Ashiok Kaya Samut Defaite Sarkhan].sample
-                      end
-
-    @parameter = params[:search]
     @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{@parameter}")
   end
 
@@ -85,5 +73,25 @@ class CardsController < ApplicationController
   def card_params
     params.require(:card).permit(:title, :description, :author, :year, :image_uri, :categorie, :color, :note, :price,
                                  :add_date, :lang, :foil)
+  end
+
+  def search_params
+    params[:search] = if params[:search].present? && params[:search].length >= 3
+      [params[:search]].flatten.join.unicode_normalize(:nfkd).chars.reject do |c|
+        c =~ /[\u02B0-\u02FF\u0300-\u036F]/
+      end.join.capitalize
+    elsif params[:search].present? && params[:search].length < 3
+      flash[:alert] = 'Veuillez renseigner au moins 3 caractères pour la recherche'
+      redirect_to search_cards_path
+    else
+      params[:search] = %w[Chandra Nissa Jace Gideon Liliana Ajani Sorin Nicol Tezzeret
+                           Ugin Ashiok Kaya Samut Defaite Sarkhan].sample
+    end
+
+    @parameter = params[:search]
+  end
+
+  def search_pages
+    @cards = HTTParty.get("#{@cards["next_page"]}")
   end
 end

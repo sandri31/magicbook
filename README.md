@@ -18,7 +18,7 @@
 
 ## Aperçu du projet
 
-Ce projet est un projet personnel(en cours de développement) de création d'un site web pour la gestion de sa propre collection de cartes Magic The Gathering.
+Ce projet est un projet personnel (en cours de développement) de création d'un site web pour la gestion de sa propre collection de cartes Magic The Gathering.
 Le but étant de pouvoir gérer sa collection, et voir par la suite l'estimation totale de celle-ci.
 Pour cela, l'utilisateur doit pouvoir chercher une carte, et l'ajouter à sa collection.
 
@@ -60,7 +60,7 @@ rails server
 Vous avez la possibilité de créer un compte utilisateur, de vous connecter et d'ajouter des cartes à votre collection de cartes Magic The Gathering (en cours de développement).
 Et ainsi avoir une estimation en détail de votre propre collection de cartes.
 
-Ou bien, faire une simple recherche de cartes et/ou voir une des plus de 70000 cartes Magic The Gathering au hasard. Juste pour le fun.
+Ou bien, faire une simple recherche de cartes et/ou voir une des plus de 70 000 cartes Magic The Gathering au hasard. Juste pour le fun.
 
 ![ScreenMagic4](https://user-images.githubusercontent.com/85675011/198519157-d78cfd39-bd73-4d9f-b45c-4b1c5a988d86.png)
 
@@ -71,8 +71,8 @@ Vous pouvez voir le site en production :
 
 ## Licence
 
-Vous pouvez utiliser ce projet comme bon vous semble, mais n'oubliez pas de citer mon nom et prénom (Sandri Florent) dans le README.md de votre projet.
-Et pourquoi pas de me faire un petit retour sur mon projet, ça me ferait plaisir.
+Vous pouvez utiliser ce projet comme bon vous semble, mais n'oubliez pas mettre une "stars" sur mon projet pour me donner un petit coup de pouce.
+Et pourquoi pas, me faire un petit retour, ça me ferait plaisir.
 
 ## Contribution
 

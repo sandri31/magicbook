@@ -13,4 +13,6 @@ class PublicController < ApplicationController
     res = Net::HTTP.get_response(uri)
     @card = JSON.parse(res.body)
   end
+
+  def construction; end
 end

@@ -5,24 +5,20 @@
         <button class="btn btn-primary mt-5" onclick="window.location.reload()">Recherche une carte aléatoire</button>
         <%#= render "cube" %>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-9 col-lg-4 col-xxl-3 mb-12 mt-5">
-          <img src="<%= @card["image_uris"]["normal"] %>" class="img-fluid">
-        </div>
-        <div class="col-9 col-lg-4 col-xxl-3 mb-12 mt-5">
-          <h5 class="mb-5"><%= @card["printed_name"] %></h5>
-          <% if @card["printed_text"] == nil %>
-            <p><%= @card["oracle_text"] %></p>
-          <% else %>
-            <% @card["printed_text"].split("\n").each do |text| %>
-              <p><%= text %></p>
-            <% end %>
+      <%= render "partials/modals_random" %>
+      <div class="col-9 col-lg-4 col-xxl-3 mb-12 mt-5">
+        <h5 class="mb-5"><%= @card["printed_name"] %></h5>
+        <% if @card["printed_text"] == nil %>
+          <p><%= @card["oracle_text"] %></p>
+        <% else %>
+          <% @card["printed_text"].split("\n").each do |text| %>
+            <p><%= text %></p>
           <% end %>
-          <div class="text-muted"><i><%= @card["flavor_text"] %></i></div>
-          <% if @card["printed_name"] %>
-            <h6 class="text-muted mt-5"><%= @card["artist"] %></h6>
-          <% end %>
-        </div>
+        <% end %>
+        <div class="text-muted"><i><%= @card["flavor_text"] %></i></div>
+        <% if @card["printed_name"] %>
+          <h6 class="text-muted mt-5"><%= @card["artist"] %></h6>
+        <% end %>
       </div>
       <div class="d-grid gap-2 col-9 mx-auto">
         <button class="btn btn-primary mt-5" onclick="window.location.reload()">Recherche une carte aléatoire</button>

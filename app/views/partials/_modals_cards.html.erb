@@ -7,7 +7,7 @@
   <% @cards["data"].each_with_index do |card, index| %>
     <div class="card" style="width: 18rem;">
       <% if card["layout"] == "transform" || card["layout"] == "modal_dfc" %>
-        <!-- Modal for double faced cards with transform or modal_dfc layout -->
+      <!-- Modal for double faced cards with transform or modal_dfc layout -->
       <div class="modal fade" id="transformModalToggle" aria-hidden="true" aria-labelledby="transformModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -41,9 +41,9 @@
         </div>
       </div>
       <a href="#" data-bs-toggle="modal" data-bs-target="#transformModalToggle">
-            <img src="https://img.icons8.com/ios-filled/50/000000/rotate-left.png" style="position: absolute; top: 0; right: 0;"/>
-            <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][0]["name"] %>">
-          </a>
+        <img src="https://img.icons8.com/ios-filled/50/000000/rotate-left.png" style="position: absolute; top: 0; right: 0;"/>
+        <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][0]["name"] %>">
+      </a>
       <% else %>
         <!-- Modal for normal cards -->
         <div class="modal fade" id="normalModalToggle<%= index %>" aria-hidden="true" aria-labelledby="normalModalToggleLabel<%= index %>" tabindex="-1">

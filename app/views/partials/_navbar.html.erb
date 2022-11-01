@@ -30,31 +30,6 @@
           <a class="nav-link" href="<%= search_cards_path %>">Recherche tes cartes</a>
         </li>
       </ul>
-            <% if rodauth.logged_in? %>
-            <li class="nav-item">
-              <a class="nav-link disabled">Admin</a>
-            </li>
-            <div class="dropdown">
-              <button class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" type="button">
-                <%= current_account.profile.name %>
-              </button>
-              <div class="dropdown-menu dropdown-menu-end">
-                <%= link_to "Changer de mot de passe", rodauth.change_password_path, class: "dropdown-item" %>
-                <%= link_to "Changer d'email ", rodauth.change_login_path, class: "dropdown-item" %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "supprimer mon compte", rodauth.close_account_path, class: "dropdown-item text-danger" %>
-                <%= link_to "Déconnexion", rodauth.logout_path, data: { turbo_method: :post }, class: "dropdown-item" %>
-              </div>
-              <!-- Ajouter condition si Admin -->
-              <%= link_to "ADMIN", "#", class: "btn btn-success disabled" %>
-            </div>
-
-          <% else %>
-            <div>
-              <%= link_to "Connexion", rodauth.login_path, class: "btn btn-primary  me-md-2" %>
-              <%= link_to "Inscription", rodauth.create_account_path, class: "btn btn-success me-md-2" %>
-            </div>
-          <% end %>
     </div>
   </div>
 </header>

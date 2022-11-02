@@ -16,7 +16,7 @@ class TurboFailureApp < Devise::FailureApp
   end
 
   def skip_format?
-    %w[html turbo_stream].include? request_format.to_us
+    %w[html turbo_stream].include? request_format.to_s
   end
 end
 

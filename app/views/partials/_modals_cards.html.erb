@@ -19,7 +19,7 @@
                 <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top">
               </div>
               <div class="modal-footer">
-                <%= link_to "Ajouter", "#", class: "btn btn-primary" %>
+                <%= link_to "Ajouter", "#", class: "btn btn-outline-primary" %>
                 <button class="btn btn-secondary" data-bs-target="#transformModalToggle2" data-bs-toggle="modal">Recto</button>
               </div>
             </div>
@@ -44,7 +44,7 @@
         <a href="#" data-bs-toggle="modal" data-bs-target="#transformModalToggle">
           <img src="https://img.icons8.com/ios-filled/50/000000/rotate-left.png" style="position: absolute; top: 0; right: 0;"/>
           <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][0]["name"] %>">
-          <%= link_to "Ajouter", "#", class: "btn btn-outline-secondary" %>
+          <%= link_to "Ajouter", "#", class: "btn btn-outline-primary" %>
         </a>
       <% else %>
         <!-- Modal for normal cards -->
@@ -60,7 +60,7 @@
               </div>
               <div class="modal-footer">
                 <!-- Button add to deck in modal -->
-                <%= link_to "Ajouter", "#", class: "btn btn-primary" %>
+                <%= link_to "Ajouter", "#", class: "btn btn-outline-primary" %>
                 <button class="btn btn-secondary" data-bs-target="#normalModalToggle<%= index %>" data-bs-toggle="modal">Fermer</button>
               </div>
             </div>
@@ -68,7 +68,7 @@
         </div>
         <a href="#" data-bs-toggle="modal" data-bs-target="#normalModalToggle<%= index %>">
           <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
-          <%= link_to "Ajouter", "#", class: "btn btn-outline-secondary" %>
+          <%= link_to "Ajouter", "#", class: "btn btn-outline-primary" %>
         </a>
       <% end %>
     </div>

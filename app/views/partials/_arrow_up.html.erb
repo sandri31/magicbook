@@ -1,0 +1,21 @@
+<script src="https://kit.fontawesome.com/9ad2e210ac.js" crossorigin="anonymous"></script>
+<div class ="arrow-btn">
+    <script>
+            if (window.performance) {
+            if (performance.navigation.type == 1) {
+                document.querySelector('.arrow-btn').style.display = 'none';
+            }
+        }
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 2000 || document.documentElement.scrollTop > 2000) {
+                document.querySelector(".arrow-btn").style.display = "block";
+            } else {
+                document.querySelector(".arrow-btn").style.display = "none";
+            }
+        }
+    </script>
+<a  href="#"><span class="fas fa-arrow-up">
+</span></a>
+</div>

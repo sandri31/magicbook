@@ -43,6 +43,30 @@ label .icon {
   overflow: hidden;
 }
 
+// arrow-up
+html{
+  scroll-behavior: smooth;
+}
+.arrow-btn{
+  position: fixed;
+  bottom: 5%;
+  right: 2%;
+  display: none;
+}
+.arrow-btn a{
+  height: 39px;
+  width: 37px;
+  text-align: center;
+  background: #212529;
+  display: block;
+  border-radius: 3px;
+}
+.arrow-btn a span{
+  color: #fff;
+  line-height: 150%;
+  font-size: 150%;
+}
+
 
 // on phone
 @media (max-width: 1020px) {

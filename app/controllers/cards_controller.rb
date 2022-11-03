@@ -3,6 +3,7 @@
 class CardsController < ApplicationController
   before_action :set_card, only: %i[show edit update destroy]
   before_action :search_params, only: %i[search]
+  before_action :authenticate_user!, only: %i[index]
 
   # GET /cards or /cards.json
   def index

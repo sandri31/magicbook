@@ -10,23 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_02_081808) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_04_122002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.text "title"
-    t.string "description"
-    t.text "author"
-    t.integer "year"
-    t.string "image_uri"
-    t.string "categorie"
-    t.text "color"
-    t.text "note"
+    t.string "name"
+    t.integer "quantity"
     t.integer "price"
-    t.datetime "add_date"
-    t.text "lang"
-    t.boolean "foil"
+    t.integer "multiverse_ids"
+    t.string "image_uris"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

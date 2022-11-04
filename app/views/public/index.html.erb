@@ -11,7 +11,7 @@
       </p>
       <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mt-4">
         <%= link_to "Recherche tes cartes →", search_cards_path, class: "btn btn-dark btn-lg" %>
-        <button type="button" class="btn btn-outline-dark btn-lg ms-0 ms-md-2 mt-2 mt-md-0">Evalue ta collection</button>
+        <%= link_to "Evalue ta collection", cards_path, class: "btn btn-outline-dark btn-lg ms-0 ms-md-2 mt-2 mt-md-0" %>
       </div>
     </div>
   </section>
@@ -45,7 +45,7 @@
           <span class="text-muted">ta collection.</span>
         </h2>
         <p class="lead">Ta collection est visible entièrement ici. Tu vas pouvoir voir le prix unitaire de chacune de tes cartes.</p>
-        <a href="<%= construction_path %>" class="landing-badge">
+        <a href="<%= cards_path %>" class="landing-badge">
           <button type="button" class="btn btn-outline-dark">Direction calculette en main!</button>
         </a>
       </div>

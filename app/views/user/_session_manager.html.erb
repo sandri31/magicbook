@@ -1,10 +1,10 @@
 <% if current_user %>
   <ul class="navbar-nav">
-    <li class="btn-group dropstart">
-      <a class="btn btn-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <li class="nav-item dropdown">
+      <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <%= "Mon compte" %>
       </a>
-      <ul class="dropdown-menu">
+      <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-end">
         <li><a class="dropdown-item" href="<%= edit_user_registration_path %>">Modifier mon profil</a></li>
         <li><a> <%= button_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></a></li>
       </ul>

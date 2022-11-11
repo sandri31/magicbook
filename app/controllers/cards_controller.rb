@@ -3,11 +3,13 @@
 class CardsController < ApplicationController
   before_action :set_card, only: %i[show edit update destroy]
   before_action :search_params, only: %i[new]
+  before_action :require_same_user , only: %i[edit update destroy]
   before_action :authenticate_user!, only: %i[index]
 
   # GET /cards or /cards.json
   def index
-    @cards = Card.all
+    @user = current_user
+    @cards = Card.where(user_id: @user.id)
     console
   end
 
@@ -30,9 +32,8 @@ class CardsController < ApplicationController
   # POST /cards or /cards.json
   def create
     @card = Card.new(card_params)
+    @card.user = current_user
     @card.save
-    redirect_to cards_path
-
   end
 
   # PATCH/PUT /cards/1 or /cards/1.json
@@ -49,10 +50,7 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
-  def search
-    @cards = Card.where(user_id: current_user.id)
-    @cards = Card.where("name LIKE ?", "%#{params[:search]}%")
-  end
+  def search; end
 
   private
 
@@ -64,6 +62,13 @@ class CardsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def card_params
     params.require(:card).permit(:printed_name, :name, :user_id, :image_uris, :multiverse_ids, :quantity, :price)
+  end
+
+  def require_same_user
+    if current_user != @card.user
+      flash[:danger] = "Vous ne pouvez modifier que vos propres cartes"
+      redirect_to root_path
+    end
   end
 
   def search_params

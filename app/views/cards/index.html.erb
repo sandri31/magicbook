@@ -1,14 +1,6 @@
-<p style="color: green"><%= notice %></p>
 
 <% @cards.each do |card| %>
-  <p>
-    <%= card.image_uris %>
-    <%= card.printed_name %>
-    <%= card.name %>
-    <%= card.multiverse_ids %>
-    <%= card.quantity %>
-    <%= card.price %>
-  <p>
+  <%= image_tag card.image_uris, size: "200x200" %>
 <% end %>
 
 <div class="container text-center">

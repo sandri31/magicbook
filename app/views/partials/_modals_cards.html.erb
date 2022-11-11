@@ -75,7 +75,6 @@
         <a href="#" data-bs-toggle="modal" data-bs-target="#normalModalToggle<%= index %>">
           <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
         </a>
-
           <% if user_signed_in? %>
             <%= form_for @card do |f| %>
               <%= f.hidden_field :name, value: card["name"] %>

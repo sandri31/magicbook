@@ -1,5 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
+<%= @cards.each do |card| %>
+  <p>
+    <%= card.name %>
+    <%= card.image_uris %>
+    <%= card.multiverse_ids %>
+    <%= card.quantity %>
+    <%= card.price %>
+  <p>
+<% end %>
+
 <div class="container text-center">
   <h1 class="display-4"><strong>Bienvenue sur la page de</strong></h1>
   <h1><strong><span class=" pb-3 background-gradient">votre collection Magic.</span></strong></h1>

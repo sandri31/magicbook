@@ -2,78 +2,68 @@
 
 class CardsController < ApplicationController
   before_action :set_card, only: %i[show edit update destroy]
-  before_action :search_params, only: %i[search]
+  before_action :search_params, only: %i[new]
   before_action :authenticate_user!, only: %i[index]
 
   # GET /cards or /cards.json
   def index
-    @cards = Card.all
+    # @cards = Card.all
+    @cards = Card.where(user_id: current_user.id)
   end
 
   # GET /cards/1 or /cards/1.json
-  def show; end
+  def show
+    @card = Card.find(params[:id])
+  end
 
   # GET /cards/new
   def new
+    @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{params[:search]}")
     @card = Card.new
+    console
   end
-
   # GET /cards/1/edit
-  def edit; end
+  def edit
+    @card = Card.find(params[:id])
+  end
 
   # POST /cards or /cards.json
   def create
     @card = Card.new(card_params)
+    @card.save
+    redirect_to cards_path
 
-    respond_to do |format|
-      if @card.save
-        format.html { redirect_to card_url(@card), notice: 'Card was successfully created.' }
-        format.json { render :show, status: :created, location: @card }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /cards/1 or /cards/1.json
   def update
-    respond_to do |format|
-      if @card.update(card_params)
-        format.html { redirect_to card_url(@card), notice: 'Card was successfully updated.' }
-        format.json { render :show, status: :ok, location: @card }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
-    end
+    @card = Card.find(params[:id])
+    @card.update(card_params)
+    redirect_to cards_path
   end
 
   # DELETE /cards/1 or /cards/1.json
   def destroy
+    @card = Card.find(params[:id])
     @card.destroy
-
-    respond_to do |format|
-      format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to cards_path
   end
 
   def search
-    @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{@parameter}")
+    @cards = Card.where(user_id: current_user.id)
+    @cards = Card.where("name LIKE ?", "%#{params[:search]}%")
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_card
-    @card = Card.find(params[:id])
+
   end
 
   # Only allow a list of trusted parameters through.
   def card_params
-    params.require(:card).permit(:title, :description, :author, :year, :image_uri, :categorie, :color, :note, :price,
-                                 :add_date, :lang, :foil)
+    params.require(:card).permit(:name, :user_id, :image_url, :multiverse_ids, :quantity, :price)
   end
 
   def search_params
@@ -83,16 +73,10 @@ class CardsController < ApplicationController
       end.join.capitalize
     elsif params[:search].present? && params[:search].length < 3
       flash[:alert] = 'Veuillez renseigner au moins 3 caractères pour la recherche'
-      redirect_to search_cards_path
+      redirect_to new_card_path
     else
       params[:search] = %w[Chandra Nissa Jace Gideon Liliana Ajani Sorin Nicol Tezzeret
                            Ugin Ashiok Kaya Samut Defaite Sarkhan].sample
     end
-
-    @parameter = params[:search]
-  end
-
-  def search_pages
-    @cards = HTTParty.get("#{@cards["next_page"]}")
   end
 end

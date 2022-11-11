@@ -2,9 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :cards do
-    get 'search', to: 'cards#search', on: :collection
-  end
+  resources :cards
 
   # Public pages
   root 'public#index'

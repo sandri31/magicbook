@@ -1,9 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
-<%= @cards.each do |card| %>
+<% @cards.each do |card| %>
   <p>
-    <%= card.name %>
     <%= card.image_uris %>
+    <%= card.printed_name %>
+    <%= card.name %>
     <%= card.multiverse_ids %>
     <%= card.quantity %>
     <%= card.price %>

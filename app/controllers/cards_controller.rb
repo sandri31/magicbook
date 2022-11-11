@@ -7,8 +7,8 @@ class CardsController < ApplicationController
 
   # GET /cards or /cards.json
   def index
-    # @cards = Card.all
-    @cards = Card.where(user_id: current_user.id)
+    @cards = Card.all
+    console
   end
 
   # GET /cards/1 or /cards/1.json
@@ -58,12 +58,12 @@ class CardsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_card
-
+    @card = Card.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def card_params
-    params.require(:card).permit(:name, :user_id, :image_url, :multiverse_ids, :quantity, :price)
+    params.require(:card).permit(:printed_name, :name, :user_id, :image_uris, :multiverse_ids, :quantity, :price)
   end
 
   def search_params

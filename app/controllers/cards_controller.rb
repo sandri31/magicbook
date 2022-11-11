@@ -61,7 +61,7 @@ class CardsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def card_params
-    params.require(:card).permit(:printed_name, :name, :user_id, :image_uris, :multiverse_ids, :quantity, :price)
+    params.require(:card).permit(:printed_name, :name, :user_id, :image_uris, :multiverse_ids, :quantity, :price, :color_identity)
   end
 
   def require_same_user

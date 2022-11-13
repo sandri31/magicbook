@@ -1,6 +1,13 @@
-
 <% @cards.each do |card| %>
-  <%= image_tag card.image_uris, size: "200x200" %>
+  <%#= image_tag card.image_uris, size: "200x200" %>
+<% end %>
+
+<% @cards.group_by(&:color_identity).each do |color, cards| %>
+  <h2><%= color %></h2>
+  <% cards.each do |card| %>
+    <!-- Affiche le nom des cartes -->
+    <%= image_tag card.image_uris, size: "200x200" %>
+  <% end %>
 <% end %>
 
 <div class="container text-center">

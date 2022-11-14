@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   before_action :set_card, only: %i[show edit update destroy]
   before_action :search_params, only: %i[new]
   before_action :require_same_user , only: %i[edit update destroy]
-  before_action :authenticate_user!, only: %i[index]
+  before_action :authenticate_user!, only: %i[index top]
 
   # GET /cards or /cards.json
   def index
@@ -14,9 +14,7 @@ class CardsController < ApplicationController
   end
 
   # GET /cards/1 or /cards/1.json
-  def show
-    @card = Card.find(params[:id])
-  end
+  def show; end
 
   # GET /cards/new
   def new
@@ -25,9 +23,7 @@ class CardsController < ApplicationController
     console
   end
   # GET /cards/1/edit
-  def edit
-    @card = Card.find(params[:id])
-  end
+  def edit; end
 
   # POST /cards or /cards.json
   def create
@@ -38,19 +34,20 @@ class CardsController < ApplicationController
 
   # PATCH/PUT /cards/1 or /cards/1.json
   def update
-    @card = Card.find(params[:id])
     @card.update(card_params)
     redirect_to cards_path
   end
 
   # DELETE /cards/1 or /cards/1.json
   def destroy
-    @card = Card.find(params[:id])
     @card.destroy
     redirect_to cards_path
   end
 
-  def search; end
+  def top
+    @user = current_user
+    @cards = Card.where(user_id: @user.id)
+  end
 
   private
 

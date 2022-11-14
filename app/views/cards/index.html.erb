@@ -1,722 +1,210 @@
-<% @cards.each do |card| %>
-  <%#= image_tag card.image_uris, size: "200x200" %>
-<% end %>
-
-<% @cards.group_by(&:color_identity).each do |color, cards| %>
-  <h2><%= color %></h2>
-  <% cards.each do |card| %>
-    <!-- Affiche le nom des cartes -->
-    <%= image_tag card.image_uris, size: "200x200" %>
-  <% end %>
-<% end %>
-
-<div class="container text-center">
-  <h1 class="display-4"><strong>Bienvenue sur la page de</strong></h1>
-  <h1><strong><span class=" pb-3 background-gradient">votre collection Magic.</span></strong></h1>
-  <p class="lead mb-5">Tu as la possibilité d'aller voir directement par couleur toute tes cartes et modifier leur quantité :</p>
-  <label>
-    <a class="btn" href="#scrollButtonWhite" role="button">
-      <div class="icon"><img class="fa white" src="https://gatherer.wizards.com/images/Redesign/White_Mana.png"></div>
-    </a>
-  </label>
-  <label>
-    <a class="btn" href="#scrollButtonBlue" role="button">
-      <div class="icon"><img class="fa white" src="https://gatherer.wizards.com/images/Redesign/Blue_Mana.png"></div>
-    </a>
-  </label>
-  <label>
-    <a class="btn" href="#scrollButtonBlack" role="button">
-      <div class="icon"><img class="fa white" src="https://gatherer.wizards.com/images/Redesign/Black_Mana.png"></div>
-    </a>
-  </label>
-  <label>
-    <a class="btn" href="#scrollButtonRed" role="button">
-      <div class="icon"><img class="fa white" src="https://gatherer.wizards.com/images/Redesign/Red_Mana.png"></div>
-    </a>
-  </label>
-  <label>
-    <a class="btn" href="#scrollButtonGreen" role="button">
-      <div class="icon"><img class="fa white" src="https://gatherer.wizards.com/images/Redesign/Green_Mana.png"></div>
-    </a>
-  </label>
-  <p class="lead mb-5">Voici un aperçu du <strong>top 10</strong> de vos cartes les plus chères :</p>
-
-  <!-- Test -->
-
-
-  <!-- White -->
-  <a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
-    <p class="h1">Blanc</p>
-  </a>
-  <div class="container table-responsive-sm">
-    <table class="table table-dark table-hover">
-      <thead>
-        <tr>
-          <th>Top</th>
-          <th>Carte</th>
-          <th>Quantité</th>
-          <th>Prix (unitaire)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!-- Blue -->
-  <a class="container-fluid bg-primary text-center text-white p-3 btn btn-primary" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
-    <p class="h1">Blue</p>
-  </a>
-  <div class="container table-responsive-sm">
-    <table class="table table-dark table-hover">
-      <thead>
-        <tr>
-          <th>Top</th>
-          <th>Carte</th>
-          <th>Quantité</th>
-          <th>Prix (unitaire)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!-- Black -->
-  <a class="container-fluid bg-dark text-center text-white p-3 btn btn-dark" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
-    <p class="h1">Noir</p>
-  </a>
-  <div class="container table-responsive-sm">
-    <table class="table table-dark table-hover">
-      <thead>
-        <tr>
-          <th>Top</th>
-          <th>Carte</th>
-          <th>Quantité</th>
-          <th>Prix (unitaire)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!-- Red -->
-  <a class="container-fluid bg-danger text-center text-white p-3 btn btn-danger" id="scrollButtonRed" href="#scrollButtonRed" role="button">
-    <p class="h1">Rouge</p>
-  </a>
-  <div class="container table-responsive-sm">
-    <table class="table table-dark table-hover">
-      <thead>
-        <tr>
-          <th>Top</th>
-          <th>Carte</th>
-          <th>Quantité</th>
-          <th>Prix (unitaire)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!-- Green -->
-  <a class="container-fluid bg-success text-center text-white p-3 btn btn-success" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
-    <p class="h1">Vert</p>
-  </a>
-  <div class="container table-responsive-sm">
-    <table class="table table-dark table-hover">
-      <thead>
-        <tr>
-          <th>Top</th>
-          <th>Carte</th>
-          <th>Quantité</th>
-          <th>Prix (unitaire)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!-- Multi -->
-  <a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning" id="scrollButtonMulti" href="#scrollButtonMulti" role="button">
-    <p class="h1">Multi-couleur</p>
-  </a>
-  <div class="container table-responsive-sm">
-    <table class="table table-dark table-hover">
-      <thead>
-        <tr>
-          <th>Top</th>
-          <th>Carte</th>
-          <th>Quantité</th>
-          <th>Prix (unitaire)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <!-- Artefact -->
-  <a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary" id="scrollButtonArtefact" href="#scrollButtonArtefact" role="button">
-    <p class="h1">Artefact</p>
-  </a>
-  <div class="container table-responsive-sm">
-    <table class="table table-dark table-hover">
-      <thead>
-        <tr>
-          <th>Top</th>
-          <th>Carte</th>
-          <th>Quantité</th>
-          <th>Prix (unitaire)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
+<!-- Ajoute un bouton en haut de l'écran et au milieu de l'écran en dessous de la navbar -->
+<div class="d-grid gap-2 col-8 mx-auto mt-5 my-5">
+  <button class="btn btn-primary" href="#" type="button">Voir le tableau de prix</button>
 </div>
 
-<%#= link_to "New card", new_card_path %>
+<div class="btn-group my-5" role="group">
+  <button type="button" class="btn btn-primary">Blanc</button>
+  <button type="button" class="btn btn-primary">Bleu</button>
+  <button type="button" class="btn btn-primary">Noir</button>
+  <button type="button" class="btn btn-primary">Rouge</button>
+  <button type="button" class="btn btn-primary">Vert</button>
+  <button type="button" class="btn btn-primary">Multicolor</button>
+  <button type="button" class="btn btn-primary">Incolor</button>
+</div>
+
+<!-- White -->
+<!-- SI aucune carte n'a une identity_color de "W" alors on affiche le bouton -->
+
+
+<% if @white_card %>
+  <div class="card text-center mt-5">
+    <div class="card-header">
+      <h3><%= @white_card.title %></h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><%= @white_card.description %></p>
+    </div>
+  </div>
+<% end %>
+<a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
+  <p class="h1">Blanc</p>
+</a>
+<div class="container table-responsive-sm">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Carte</th>
+        <th>Quantité</th>
+        <th>Prix (unitaire)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.sort_by(&:printed_name).each do |card| %>
+        <% if card.color_identity == "W" %>
+          <tr>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Blue -->
+<a class="container-fluid bg-primary text-center text-white p-3 btn btn-primary" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
+  <p class="h1">Bleu</p>
+</a>
+<div class="container table-responsive-sm">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Carte</th>
+        <th>Quantité</th>
+        <th>Prix (unitaire)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.sort_by(&:printed_name).each do |card| %>
+        <% if card.color_identity == "U" %>
+          <tr>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Black -->
+<a class="container-fluid bg-dark text-center text-white p-3 btn btn-dark" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
+  <p class="h1">Noir</p>
+</a>
+<div class="container table-responsive-sm">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Carte</th>
+        <th>Quantité</th>
+        <th>Prix (unitaire)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.sort_by(&:printed_name).each do |card| %>
+        <% if card.color_identity == "B" %>
+          <tr>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Red -->
+<a class="container-fluid bg-danger text-center text-white p-3 btn btn-danger" id="scrollButtonRed" href="#scrollButtonRed" role="button">
+  <p class="h1">Rouge</p>
+</a>
+<div class="container table-responsive-sm">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Carte</th>
+        <th>Quantité</th>
+        <th>Prix (unitaire)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.sort_by(&:printed_name).each do |card| %>
+        <% if card.color_identity == "R" %>
+          <tr>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Green -->
+<a class="container-fluid bg-success text-center text-white p-3 btn btn-success" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
+  <p class="h1">Vert</p>
+</a>
+<div class="container table-responsive-sm">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Carte</th>
+        <th>Quantité</th>
+        <th>Prix (unitaire)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.sort_by(&:printed_name).each do |card| %>
+        <% if card.color_identity == "G" %>
+          <tr>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Multicolor -->
+<a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning" id="scrollButtonMulti" href="#scrollButtonMulti" role="button">
+  <p class="h1">Multicolore</p>
+</a>
+<div class="container table-responsive-sm">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Carte</th>
+        <th>Quantité</th>
+        <th>Prix (unitaire)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.sort_by(&:printed_name).each do |card| %>
+        <% if card.color_identity.length > 1 %>
+          <tr>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<!-- Colorless -->
+<a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary" id="scrollButtonArtefact" href="#scrollButtonArtefact" role="button">
+  <p class="h1">Incolore</p>
+</a>
+<div class="container table-responsive-sm">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Carte</th>
+        <th>Quantité</th>
+        <th>Prix (unitaire)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cards.sort_by(&:printed_name).each do |card| %>
+        <% if card.color_identity == [] %>
+          <tr>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

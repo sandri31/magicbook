@@ -2,7 +2,9 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :cards
+  resources :cards do
+    get 'top', to: 'cards#top'
+  end
 
   # Public pages
   root 'public#index'

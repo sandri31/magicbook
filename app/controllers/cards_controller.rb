@@ -30,7 +30,6 @@ class CardsController < ApplicationController
   def new
     @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{params[:search]}")
     @card = Card.new
-    console
   end
   # GET /cards/1/edit
   def edit; end

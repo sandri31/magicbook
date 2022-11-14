@@ -2,11 +2,12 @@
   <h1 class="display-4"><strong>Bienvenue sur la page de</strong></h1>
   <h1><strong><span class=" pb-3 background-gradient">votre collection Magic.</span></strong></h1>
   <p class="lead my-5">Tu as la possibilité d'aller voir directement par couleur toute tes cartes et modifier leur quantité :</p>
+  <p class="lead my-5">Cette page est encore en construction</p>
 
   <div class="bd-example">
     <button type="button" class="btn btn-light">Blanc</button>
     <button type="button" class="btn btn-primary">Bleu</button>
-    <button type="button" class="btn btn-dark">Noir</button>
+    <button type="button" class="btn btn-dark disabled">Noir</button>
     <button type="button" class="btn btn-danger">Rouge</button>
     <button type="button" class="btn btn-success">Vert</button>
     <button type="button" class="btn btn-warning">Multicolor</button>
@@ -15,7 +16,6 @@
 
   <p class="lead mb-5 my-5">Actuellement tu as <%= @cards.count %> cartes dans ta collection</p>
 </div>
-
 
 <!-- White -->
 <a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
@@ -35,7 +35,11 @@
         <% if card.color_identity == "W" %>
           <tr>
             <td><%= card.printed_name %></td>
-            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark" %></td>
+            <!-- Disabled state -->
+            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-outline-light btn-sm disabled" %>
+              <%= card.quantity %>
+              <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-outline-light btn-sm disabled" %>
+            </td>
             <td><%= card.price %></td>
           </tr>
         <% end %>
@@ -61,7 +65,7 @@
         <% if card.color_identity == "U" %>
           <tr>
             <td><%= card.printed_name %></td>
-            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark" %></td>
+            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %></td>
             <td><%= card.price %></td>
           </tr>
         <% end %>
@@ -87,7 +91,7 @@
         <% if card.color_identity == "B" %>
           <tr>
             <td><%= card.printed_name %></td>
-            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark" %></td>
+            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %></td>
             <td><%= card.price %></td>
           </tr>
         <% end %>
@@ -113,7 +117,7 @@
         <% if card.color_identity == "R" %>
           <tr>
             <td><%= card.printed_name %></td>
-            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark" %></td>
+            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %></td>
             <td><%= card.price %></td>
           </tr>
         <% end %>
@@ -139,7 +143,7 @@
         <% if card.color_identity == "G" %>
           <tr>
             <td><%= card.printed_name %></td>
-            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark" %></td>
+            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %></td>
             <td><%= card.price %></td>
           </tr>
         <% end %>
@@ -165,7 +169,7 @@
         <% if card.color_identity.length > 1 %>
           <tr>
             <td><%= card.printed_name %></td>
-            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark" %></td>
+            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %></td>
             <td><%= card.price %></td>
           </tr>
         <% end %>
@@ -191,7 +195,7 @@
         <% if card.color_identity == "" %>
           <tr>
             <td><%= card.printed_name %></td>
-            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark" %></td>
+            <td><%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %> <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %></td>
             <td><%= card.price %></td>
           </tr>
         <% end %>

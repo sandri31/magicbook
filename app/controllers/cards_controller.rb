@@ -2,12 +2,25 @@
 
 class CardsController < ApplicationController
   before_action :set_card, only: %i[show edit update destroy]
-  before_action :search_params, only: %i[search]
-  before_action :authenticate_user!, only: %i[index]
+  before_action :search_params, only: %i[new]
+  before_action :require_same_user , only: %i[edit update destroy]
+  before_action :authenticate_user!, only: %i[index top]
 
   # GET /cards or /cards.json
   def index
-    @cards = Card.all
+    @user = current_user
+    @cards = Card.where(user_id: @user.id)
+
+    @white_card =      Card.where(color_identity: "W", user_id: @user.id)
+    @blue_card =       Card.where(color_identity: "U", user_id: @user.id)
+    @black_card =      Card.where(color_identity: "B", user_id: @user.id)
+    @red_card =        Card.where(color_identity: "R", user_id: @user.id)
+    @green_card =      Card.where(color_identity: "G", user_id: @user.id)
+    @colorless_card =  Card.where(color_identity: "", user_id: @user.id)
+    @multicolor_card = Card.where(printed_name: @cards.where.not(color_identity: "W")
+                            .where.not(color_identity: "U").where.not(color_identity: "B")
+                            .where.not(color_identity: "R").where.not(color_identity: "G")
+                            .where.not(color_identity: "").pluck(:printed_name), user_id: @user.id)
   end
 
   # GET /cards/1 or /cards/1.json
@@ -15,52 +28,35 @@ class CardsController < ApplicationController
 
   # GET /cards/new
   def new
+    @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{params[:search]}")
     @card = Card.new
+    console
   end
-
   # GET /cards/1/edit
   def edit; end
 
   # POST /cards or /cards.json
   def create
     @card = Card.new(card_params)
-
-    respond_to do |format|
-      if @card.save
-        format.html { redirect_to card_url(@card), notice: 'Card was successfully created.' }
-        format.json { render :show, status: :created, location: @card }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
-    end
+    @card.user = current_user
+    @card.save
   end
 
   # PATCH/PUT /cards/1 or /cards/1.json
   def update
-    respond_to do |format|
-      if @card.update(card_params)
-        format.html { redirect_to card_url(@card), notice: 'Card was successfully updated.' }
-        format.json { render :show, status: :ok, location: @card }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @card.errors, status: :unprocessable_entity }
-      end
-    end
+    @card.update(card_params)
+    redirect_to cards_path
   end
 
   # DELETE /cards/1 or /cards/1.json
   def destroy
     @card.destroy
-
-    respond_to do |format|
-      format.html { redirect_to cards_url, notice: 'Card was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to cards_path
   end
 
-  def search
-    @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{@parameter}")
+  def top
+    @user = current_user
+    @cards = Card.where(user_id: @user.id)
   end
 
   private
@@ -72,8 +68,14 @@ class CardsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def card_params
-    params.require(:card).permit(:title, :description, :author, :year, :image_uri, :categorie, :color, :note, :price,
-                                 :add_date, :lang, :foil)
+    params.require(:card).permit(:printed_name, :name, :user_id, :image_uris, :multiverse_ids, :quantity, :price, :color_identity)
+  end
+
+  def require_same_user
+    if current_user != @card.user
+      flash[:danger] = "Vous ne pouvez modifier que vos propres cartes"
+      redirect_to root_path
+    end
   end
 
   def search_params
@@ -83,16 +85,10 @@ class CardsController < ApplicationController
       end.join.capitalize
     elsif params[:search].present? && params[:search].length < 3
       flash[:alert] = 'Veuillez renseigner au moins 3 caractères pour la recherche'
-      redirect_to search_cards_path
+      redirect_to new_card_path
     else
       params[:search] = %w[Chandra Nissa Jace Gideon Liliana Ajani Sorin Nicol Tezzeret
                            Ugin Ashiok Kaya Samut Defaite Sarkhan].sample
     end
-
-    @parameter = params[:search]
-  end
-
-  def search_pages
-    @cards = HTTParty.get("#{@cards["next_page"]}")
   end
 end

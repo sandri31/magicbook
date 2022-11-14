@@ -10,25 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_02_081808) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_13_094920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
-    t.text "title"
-    t.string "description"
-    t.text "author"
-    t.integer "year"
-    t.string "image_uri"
-    t.string "categorie"
-    t.text "color"
-    t.text "note"
-    t.integer "price"
-    t.datetime "add_date"
-    t.text "lang"
-    t.boolean "foil"
+    t.string "name"
+    t.integer "quantity"
+    t.decimal "price", precision: 8, scale: 2
+    t.integer "multiverse_ids"
+    t.string "image_uris"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "printed_name"
+    t.string "color_identity"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,8 +35,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_081808) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

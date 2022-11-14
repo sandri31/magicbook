@@ -2,7 +2,8 @@
   <ul class="navbar-nav">
     <li class="nav-item dropdown">
       <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <%= "Mon compte" %>
+      <!-- Affiche le username de l'utilisateur connecté -->
+        <%= current_user.username.capitalize %>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-end">
         <li><a class="dropdown-item" href="<%= edit_user_registration_path %>">Modifier mon profil</a></li>

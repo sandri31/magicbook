@@ -10,7 +10,7 @@
         <span class="d-block pb-2">Et évaluons le prix de ta collection !</span>
       </p>
       <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mt-4">
-        <%= link_to "Recherche tes cartes →", search_cards_path, class: "btn btn-dark btn-lg" %>
+        <%= link_to "Recherche tes cartes →", new_card_path, class: "btn btn-dark btn-lg" %>
         <%= link_to "Evalue ta collection", cards_path, class: "btn btn-outline-dark btn-lg ms-0 ms-md-2 mt-2 mt-md-0" %>
       </div>
     </div>
@@ -28,7 +28,7 @@
           <span class="text-muted">trouver tes cartes.</span>
         </h2>
         <p class="lead">Tu vas trouver toutes tes cartes de façon rapide et simple à la fois !<br>Soit patient et amuse-toi.</p>
-        <a href="<%= search_cards_path %>" class="landing-badge">
+        <a href="<%= new_card_path %>" class="landing-badge">
           <button type="button" class="btn btn-outline-dark">Direction fouille intensive</button>
         </a>
       </div>

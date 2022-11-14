@@ -1,7 +1,8 @@
-<!-- Ajoute un bouton en haut de l'écran et au milieu de l'écran en dessous de la navbar -->
 <div class="d-grid gap-2 col-8 mx-auto mt-5 my-5">
   <button class="btn btn-primary" href="#" type="button">Voir le tableau de prix</button>
 </div>
+
+<p>Actuellement vous avez <%= @cards.count %> cartes dans votre collection</p>
 
 <div class="btn-group my-5" role="group">
   <button type="button" class="btn btn-primary">Blanc</button>
@@ -14,21 +15,8 @@
 </div>
 
 <!-- White -->
-<!-- SI aucune carte n'a une identity_color de "W" alors on affiche le bouton -->
-
-
-<% if @white_card %>
-  <div class="card text-center mt-5">
-    <div class="card-header">
-      <h3><%= @white_card.title %></h3>
-    </div>
-    <div class="card-body">
-      <p class="card-text"><%= @white_card.description %></p>
-    </div>
-  </div>
-<% end %>
 <a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
-  <p class="h1">Blanc</p>
+  <p class="h1">Blanc (<%= @white_card.count %>)</p>
 </a>
 <div class="container table-responsive-sm">
   <table class="table table-dark table-hover">
@@ -53,8 +41,8 @@
   </table>
 </div>
 <!-- Blue -->
-<a class="container-fluid bg-primary text-center text-white p-3 btn btn-primary" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
-  <p class="h1">Bleu</p>
+<a class="container-fluid bg-primary text-center text-white p-3 btn btn-primary mt-2" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
+  <p class="h1">Bleu (<%= @blue_card.count %>)</p>
 </a>
 <div class="container table-responsive-sm">
   <table class="table table-dark table-hover">
@@ -79,8 +67,8 @@
   </table>
 </div>
 <!-- Black -->
-<a class="container-fluid bg-dark text-center text-white p-3 btn btn-dark" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
-  <p class="h1">Noir</p>
+<a class="container-fluid bg-dark text-center text-white p-3 btn btn-dark mt-2" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
+  <p class="h1">Noir (<%= @black_card.count %>)</p>
 </a>
 <div class="container table-responsive-sm">
   <table class="table table-dark table-hover">
@@ -105,8 +93,8 @@
   </table>
 </div>
 <!-- Red -->
-<a class="container-fluid bg-danger text-center text-white p-3 btn btn-danger" id="scrollButtonRed" href="#scrollButtonRed" role="button">
-  <p class="h1">Rouge</p>
+<a class="container-fluid bg-danger text-center text-white p-3 btn btn-danger mt-2" id="scrollButtonRed" href="#scrollButtonRed" role="button">
+  <p class="h1">Rouge (<%= @red_card.count %>)</p>
 </a>
 <div class="container table-responsive-sm">
   <table class="table table-dark table-hover">
@@ -131,8 +119,8 @@
   </table>
 </div>
 <!-- Green -->
-<a class="container-fluid bg-success text-center text-white p-3 btn btn-success" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
-  <p class="h1">Vert</p>
+<a class="container-fluid bg-success text-center text-white p-3 btn btn-success mt-2" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
+  <p class="h1">Vert (<%= @green_card.count %>)</p>
 </a>
 <div class="container table-responsive-sm">
   <table class="table table-dark table-hover">
@@ -157,8 +145,8 @@
   </table>
 </div>
 <!-- Multicolor -->
-<a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning" id="scrollButtonMulti" href="#scrollButtonMulti" role="button">
-  <p class="h1">Multicolore</p>
+<a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning mt-2" id="scrollButtonMulti" href="#scrollButtonMulti" role="button">
+  <p class="h1">Multicolore (<%= @multicolor_card.count %>)</p>
 </a>
 <div class="container table-responsive-sm">
   <table class="table table-dark table-hover">
@@ -183,8 +171,8 @@
   </table>
 </div>
 <!-- Colorless -->
-<a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary" id="scrollButtonArtefact" href="#scrollButtonArtefact" role="button">
-  <p class="h1">Incolore</p>
+<a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary mt-2" id="scrollButtonArtefact" href="#scrollButtonArtefact" role="button">
+  <p class="h1">Incolore (<%= @colorless_card.count %>)</p>
 </a>
 <div class="container table-responsive-sm">
   <table class="table table-dark table-hover">
@@ -197,7 +185,7 @@
     </thead>
     <tbody>
       <% @cards.sort_by(&:printed_name).each do |card| %>
-        <% if card.color_identity == [] %>
+        <% if card.color_identity == "" %>
           <tr>
             <td><%= card.printed_name %></td>
             <td><%= card.quantity %></td>

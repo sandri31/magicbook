@@ -19,9 +19,7 @@
                 <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top">
               </div>
               <div class="modal-footer">
-              <% if user_signed_in? %>
-                <%= link_to "Ajouter", "#", class: "btn btn-outline-primary" %>
-              <% end %>
+                <%= render "partials/add_to_collection", card: card %>
                 <button class="btn btn-secondary" data-bs-target="#transformModalToggle2" data-bs-toggle="modal">Recto</button>
               </div>
             </div>
@@ -46,9 +44,7 @@
         <a href="#" data-bs-toggle="modal" data-bs-target="#transformModalToggle">
           <img src="https://img.icons8.com/ios-filled/50/000000/rotate-left.png" style="position: absolute; top: 0; right: 0;"/>
           <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["card_faces"][0]["name"] %>">
-          <% if user_signed_in? %>
-            <%= link_to "Ajouter", "#", class: "btn btn-outline-primary" %>
-          <% end %>
+          <%= render "partials/add_to_collection", card: card %>
         </a>
       <% else %>
         <!-- Modal for normal cards -->
@@ -63,10 +59,7 @@
                 <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
               </div>
               <div class="modal-footer">
-                <!-- Button add to deck in modal -->
-                <% if user_signed_in? %>
-                  <%= link_to "Ajouter", "#", class: "btn btn-outline-primary" %>
-                <% end %>
+                <%= render "partials/add_to_collection", card: card %>
                 <button class="btn btn-secondary" data-bs-target="#normalModalToggle<%= index %>" data-bs-toggle="modal">Fermer</button>
               </div>
             </div>
@@ -75,19 +68,7 @@
         <a href="#" data-bs-toggle="modal" data-bs-target="#normalModalToggle<%= index %>">
           <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
         </a>
-          <% if user_signed_in? %>
-            <%= form_for @card do |f| %>
-              <%= f.hidden_field :name, value: card["name"] %>
-              <%= f.hidden_field :printed_name, value: card["printed_name"] %>
-              <%= f.hidden_field :image_uris, value: card["image_uris"]["normal"] %>
-              <%= f.hidden_field :multiverse_ids, value: card["multiverse_ids"][0] %>
-              <%= f.hidden_field :user_id, value: current_user.id %>
-              <%= f.hidden_field :color_identity, value: card["color_identity"][0..-1] %>
-              <%= f.hidden_field :quantity, value: 1 %>
-              <%= f.hidden_field :price, value: 0 %>
-              <%= f.submit "Ajouter", class: "btn btn-outline-primary" %>
-            <% end %>
-          <% end %>
+        <%= render "partials/add_to_collection", card: card %>
       <% end %>
     </div>
   <% end %>

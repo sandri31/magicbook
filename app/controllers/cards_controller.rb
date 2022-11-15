@@ -16,7 +16,7 @@ class CardsController < ApplicationController
     @black_card =      Card.where(color_identity: "B", user_id: @user.id)
     @red_card =        Card.where(color_identity: "R", user_id: @user.id)
     @green_card =      Card.where(color_identity: "G", user_id: @user.id)
-    @colorless_card =  Card.where(color_identity: "", user_id: @user.id)
+    @colorless_card =  Card.where(color_identity: "" , user_id: @user.id)
     @multicolor_card = Card.where(printed_name: @cards.where.not(color_identity: "W")
                             .where.not(color_identity: "U").where.not(color_identity: "B")
                             .where.not(color_identity: "R").where.not(color_identity: "G")
@@ -38,7 +38,15 @@ class CardsController < ApplicationController
   def create
     @card = Card.new(card_params)
     @card.user = current_user
-    @card.save
+    @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
+    @card_price = @card_price['prices']['eur']
+    @card.price = @card_price
+
+    if @card.save
+
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /cards/1 or /cards/1.json

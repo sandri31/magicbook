@@ -14,6 +14,7 @@
     <button type="button" class="btn btn-secondary mb-2">Incolor</button>
   </div>
   <p class="lead mb-5 my-5">Actuellement tu as <%= @cards.count %> cartes dans ta collection</p>
+  <h1>Ta collection actuellement vaux 0 €</h1>
 </div>
 
 <!-- White -->
@@ -35,8 +36,9 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
-              <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
+              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
+              <%= card.quantity %>
+              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -64,8 +66,9 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
-              <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
+              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
+              <%= card.quantity %>
+              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -93,8 +96,9 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
-              <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
+              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
+              <%= card.quantity %>
+              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -122,8 +126,9 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
-              <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
+              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
+              <%= card.quantity %>
+              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -151,8 +156,9 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
-              <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
+              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
+              <%= card.quantity %>
+              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -180,8 +186,9 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
-              <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
+              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
+              <%= card.quantity %>
+              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -209,8 +216,9 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= link_to " - ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
-              <%= card.quantity %> <%= link_to " + ", card_path(card), method: :patch, class: "btn btn-dark disabled" %>
+              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
+              <%= card.quantity %>
+              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
             </td>
             <td><%= card.price %> €</td>
           </tr>

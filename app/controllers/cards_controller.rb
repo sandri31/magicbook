@@ -41,9 +41,9 @@ class CardsController < ApplicationController
     @card.user = current_user
     @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
 
-    if @card_price["prices"]["eur_foil"] == nil
+    if @card_price["prices"]["eur"].present?
       @card.price = @card_price["prices"]["eur"]
-    else
+    elsif @card_price["prices"]["eur_foil"].present?
       @card.price = @card_price["prices"]["eur_foil"]
     end
 

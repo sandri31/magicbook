@@ -47,6 +47,8 @@ class CardsController < ApplicationController
       @card.price = @card_price["prices"]["eur_foil"]
     end
 
+    @card.quantity += 1
+
     if @card.save
       flash[:notice] = "Votre collection a été mise à jour"
     else
@@ -62,12 +64,28 @@ class CardsController < ApplicationController
 
   # DELETE /cards/1 or /cards/1.json
   def destroy
-    @card.destroy
+    if @card.quantity < 1
+      @card.destroy
+    end
   end
 
   def top
     @user = current_user
     @cards = Card.where(user_id: @user.id)
+  end
+
+  def increment
+    @card = Card.find(params[:id])
+    @card.quantity += 1
+    @card.save
+    redirect_to cards_path
+  end
+
+  def decrement
+    @card = Card.find(params[:id])
+    @card.quantity -= 1
+    @card.save
+    redirect_to cards_path
   end
 
   private

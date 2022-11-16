@@ -31,6 +31,7 @@ class CardsController < ApplicationController
     @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{params[:search]}")
     @card = Card.new
   end
+
   # GET /cards/1/edit
   def edit; end
 
@@ -39,13 +40,17 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.user = current_user
     @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
-    @card_price = @card_price['prices']['eur']
-    @card.price = @card_price
+
+    if @card_price["prices"]["eur_foil"] == nil
+      @card.price = @card_price["prices"]["eur"]
+    else
+      @card.price = @card_price["prices"]["eur_foil"]
+    end
 
     if @card.save
-
+      flash[:notice] = "Votre collection a été mise à jour"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -58,7 +63,6 @@ class CardsController < ApplicationController
   # DELETE /cards/1 or /cards/1.json
   def destroy
     @card.destroy
-    redirect_to cards_path
   end
 
   def top

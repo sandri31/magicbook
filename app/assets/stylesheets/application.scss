@@ -150,7 +150,11 @@ label .icon {
   transition: 0s;
   background: #f14e55;
 }
-
-table tr td form {
+// Modification button
+.container table tbody tr td form {
   display: inline;
+}
+.container table tbody tr td form .form-control {
+  display: inline-flex;
+  width: 45%;
 }

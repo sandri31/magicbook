@@ -13,9 +13,11 @@
     <button type="button" class="btn btn-warning mb-2">Multicolor</button>
     <button type="button" class="btn btn-secondary mb-2">Incolor</button>
   </div>
-  <p class="lead mb-5 my-5">Actuellement tu as <%= @cards.sum(:quantity) %> cartes dans ta collection.</p>
-  <h2>Ta collection actuellement est estimé à <%= @cards.sum(:price) %> €</h2>
-
+  <p class="lead mb-5 my-5">
+    Actuellement tu as <%= @cards.sum(:quantity) %> cartes dans ta collection.<br />
+    Avec total de <%= @cards.pluck(:printed_name).uniq.count %> cartes uniques.
+  </p>
+  <h2>Ta collection actuellement est estimé à <%= @total_price %> €</h2>
 </div>
 
 <!-- White -->
@@ -37,9 +39,10 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
-              <%= card.quantity %>
-              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
+              <%= form_with model: card, local: true do |form| %>
+                <%= form.number_field :quantity, class: "form-control" %>
+                <%= form.submit "Ok", class: "btn btn-primary" %>
+              <% end %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -67,9 +70,10 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
-              <%= card.quantity %>
-              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
+              <%= form_with model: card, local: true do |form| %>
+                <%= form.number_field :quantity, class: "form-control" %>
+                <%= form.submit "Ok", class: "btn btn-primary" %>
+              <% end %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -97,9 +101,10 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
-              <%= card.quantity %>
-              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
+              <%= form_with model: card, local: true do |form| %>
+                <%= form.number_field :quantity, class: "form-control" %>
+                <%= form.submit "Ok", class: "btn btn-primary" %>
+              <% end %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -127,9 +132,10 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
-              <%= card.quantity %>
-              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
+              <%= form_with model: card, local: true do |form| %>
+                <%= form.number_field :quantity, class: "form-control" %>
+                <%= form.submit "Ok", class: "btn btn-primary" %>
+              <% end %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -157,9 +163,10 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
-              <%= card.quantity %>
-              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
+              <%= form_with model: card, local: true do |form| %>
+                <%= form.number_field :quantity, class: "form-control" %>
+                <%= form.submit "Ok", class: "btn btn-primary" %>
+              <% end %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -187,9 +194,10 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
-              <%= card.quantity %>
-              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
+              <%= form_with model: card, local: true do |form| %>
+                <%= form.number_field :quantity, class: "form-control" %>
+                <%= form.submit "Ok", class: "btn btn-primary" %>
+              <% end %>
             </td>
             <td><%= card.price %> €</td>
           </tr>
@@ -217,9 +225,10 @@
           <tr>
             <td><%= card.printed_name %></td>
             <td>
-              <%= button_to "-", card_path(card), method: :patch, params: { card: { quantity: card.quantity - 1 } }, class: "btn btn-danger btn-sm" %>
-              <%= card.quantity %>
-              <%= button_to "+", card_path(card), method: :patch, params: { card: { quantity: card.quantity + 1 } }, class: "btn btn-success btn-sm" %>
+              <%= form_with model: card, local: true do |form| %>
+                <%= form.number_field :quantity, class: "form-control" %>
+                <%= form.submit "Ok", class: "btn btn-primary" %>
+              <% end %>
             </td>
             <td><%= card.price %> €</td>
           </tr>

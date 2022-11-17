@@ -21,6 +21,11 @@ class CardsController < ApplicationController
                             .where.not(color_identity: "U").where.not(color_identity: "B")
                             .where.not(color_identity: "R").where.not(color_identity: "G")
                             .where.not(color_identity: "").pluck(:printed_name), user_id: @user.id)
+
+    @total_price = 0
+    @cards.each do |card|
+      @total_price += card.total_price
+    end
   end
 
   # GET /cards/1 or /cards/1.json
@@ -72,20 +77,6 @@ class CardsController < ApplicationController
   def top
     @user = current_user
     @cards = Card.where(user_id: @user.id)
-  end
-
-  def increment
-    @card = Card.find(params[:id])
-    @card.quantity += 1
-    @card.save
-    redirect_to cards_path
-  end
-
-  def decrement
-    @card = Card.find(params[:id])
-    @card.quantity -= 1
-    @card.save
-    redirect_to cards_path
   end
 
   private

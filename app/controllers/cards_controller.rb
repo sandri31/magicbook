@@ -46,7 +46,12 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.user = current_user
     @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
-    @card.add_quantity
+
+    if @card_price["prices"]["eur"].present?
+      @card.price = @card_price["prices"]["eur"]
+    elsif @card_price["prices"]["eur_foil"].present?
+      @card.price = @card_price["prices"]["eur_foil"]
+    end
 
     @card.quantity += 1
 

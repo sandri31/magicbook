@@ -7,14 +7,6 @@ class Card < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :printed_name, presence: true, uniqueness: { scope: :user_id }
 
-  def add_quantity
-    if @card_price["prices"]["eur"].present?
-      @card.price = @card_price["prices"]["eur"]
-    elsif @card_price["prices"]["eur_foil"].present?
-      @card.price = @card_price["prices"]["eur_foil"]
-    end
-  end
-
   def total_prices
     price_total = 0
     self.quantity.times do

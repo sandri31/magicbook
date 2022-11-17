@@ -53,11 +53,18 @@ class CardsController < ApplicationController
       @card.price = @card_price["prices"]["eur_foil"]
     end
 
-    @card.quantity += 1
+    # If the card already exists in the database, we update the quantity
+    if Card.where(name: @card.name, user_id: current_user.id).present?
+      flash[:notice] = 'La carte a été ajoutée à votre collection'
+      @card = Card.where(name: @card.name, user_id: current_user.id).first
+      @card.quantity += 1
+      @card.save
+    end
 
     if @card.save
       flash[:notice] = "Votre collection a été mise à jour"
     else
+      flash[:alert] = "Une erreur est survenue"
       render :new, status: :unprocessable_entity
     end
   end

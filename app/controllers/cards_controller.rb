@@ -11,6 +11,7 @@ class CardsController < ApplicationController
     @user = current_user
     @cards = Card.where(user_id: @user.id)
 
+    # Sort the cards by name
     @white_card =      Card.where(color_identity: "W", user_id: @user.id)
     @blue_card =       Card.where(color_identity: "U", user_id: @user.id)
     @black_card =      Card.where(color_identity: "B", user_id: @user.id)
@@ -90,6 +91,7 @@ class CardsController < ApplicationController
     end
   end
 
+  # This method allows you to retrieve the search parameters
   def search_params
     params[:search] = if params[:search].present? && params[:search].length >= 3
       [params[:search]].flatten.join.unicode_normalize(:nfkd).chars.reject do |c|

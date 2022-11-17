@@ -47,6 +47,7 @@ class CardsController < ApplicationController
     @card.user = current_user
     @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
     @card.add_quantity
+
     @card.quantity += 1
 
     if @card.save
@@ -59,6 +60,7 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1 or /cards/1.json
   def update
     @card.update(card_params)
+    @card.destroy_if_quantity_is_zero
     redirect_to cards_path
   end
 

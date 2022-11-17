@@ -4,14 +4,15 @@
   <p class="lead my-5">Tu as la possibilité d'aller voir directement par couleur toutes tes cartes et modifier leurs quantités :</p>
   <p class="lead my-5"><u>Cette page est encore en construction, tu as la possibilité d'ajouter des cartes</u></p>
 
-  <div class="bd-example">
-    <button type="button" class="btn btn-light mb-2">Blanc</button>
-    <button type="button" class="btn btn-primary mb-2">Bleu</button>
-    <button type="button" class="btn btn-dark mb-2">Noir</button>
-    <button type="button" class="btn btn-danger mb-2">Rouge</button>
-    <button type="button" class="btn btn-success mb-2">Vert</button>
-    <button type="button" class="btn btn-warning mb-2">Multicolor</button>
-    <button type="button" class="btn btn-secondary mb-2">Incolor</button>
+<!-- Le meilleur moyen de faire une ancre sur la page est de mettre un id sur la div que tu veux ancrer et de mettre un href sur le lien qui va vers cette div -->
+  <div class="bd-example" >
+    <a class="btn btn-light mb-2" href="#scrollButtonWhite">Blanc</a>
+    <a class="btn btn-primary mb-2" href="#scrollButtonBlue">Bleu</a>
+    <a class="btn btn-dark mb-2" href="#scrollButtonBlack">Noir</a>
+    <a class="btn btn-danger mb-2" href="#scrollButtonRed">Rouge</a>
+    <a class="btn btn-success mb-2" href="#scrollButtonGreen">Vert</a>
+    <a class="btn btn-warning mb-2" href="#scrollButtonMulticolore">Multicolore</a>
+    <a class="btn btn-secondary mb-2" href="#scrollButtonIncolore">Incolore</a>
   </div>
   <p class="lead mb-5 my-5">
     Actuellement tu as <%= @cards.sum(:quantity) %> cartes dans ta collection.<br />
@@ -176,7 +177,7 @@
   </table>
 </div>
 <!-- Multicolor -->
-<a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning mt-2" id="scrollButtonMulti" href="#scrollButtonMulti" role="button">
+<a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning mt-2" id="scrollButtonMulticolore" href="#scrollButtonMulticolore" role="button">
   <p class="h1">Multicolore (<%= @multicolor_card.sum(:quantity) %>)</p>
 </a>
 <div class="container table-responsive-sm">
@@ -207,7 +208,7 @@
   </table>
 </div>
 <!-- Colorless -->
-<a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary mt-2" id="scrollButtonArtefact" href="#scrollButtonArtefact" role="button">
+<a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary mt-2" id="scrollButtonIncolore" href="#scrollButtonIncolore" role="button">
   <p class="h1">Incolore (<%= @colorless_card.sum(:quantity) %>)</p>
 </a>
 <div class="container table-responsive-sm">

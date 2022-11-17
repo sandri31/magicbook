@@ -24,7 +24,7 @@ class CardsController < ApplicationController
 
     @total_price = 0
     @cards.each do |card|
-      @total_price += card.total_price
+      @total_price += card.total_prices
     end
   end
 
@@ -45,13 +45,7 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.user = current_user
     @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
-
-    if @card_price["prices"]["eur"].present?
-      @card.price = @card_price["prices"]["eur"]
-    elsif @card_price["prices"]["eur_foil"].present?
-      @card.price = @card_price["prices"]["eur_foil"]
-    end
-
+    @card.add_quantity
     @card.quantity += 1
 
     if @card.save
@@ -69,9 +63,7 @@ class CardsController < ApplicationController
 
   # DELETE /cards/1 or /cards/1.json
   def destroy
-    if @card.quantity < 1
-      @card.destroy
-    end
+    destroy_if_quantity_is_zero
   end
 
   def top

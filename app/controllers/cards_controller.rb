@@ -59,13 +59,14 @@ class CardsController < ApplicationController
       @card = Card.where(name: @card.name, user_id: current_user.id).first
       @card.quantity += 1
       @card.save
-    end
-
-    if @card.save
-      flash[:notice] = "Votre collection a été mise à jour"
+    # If the card does not exist in the database, we create it
+    elsif Card.where(name: @card.name, user_id: current_user.id).blank?
+      @card.quantity += 1
+      @card.save
+    elsif @card.save
+      flash[:notice] = 'La carte a été ajoutée à votre collection'
     else
-      flash[:alert] = "Une erreur est survenue"
-      render :new, status: :unprocessable_entity
+      flash[:alert] = 'La carte n\'a pas pu être ajoutée à votre collection'
     end
   end
 

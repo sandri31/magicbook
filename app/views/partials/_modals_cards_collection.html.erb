@@ -1,0 +1,18 @@
+
+<div class="modal fade" id="normalModalToggle" aria-hidden="true" aria-labelledby="normalModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="<%= card.image_uris %>" class="card-img-top" alt="<%= card["name"] %>">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light disabled"><strong><%= card.printed_name %></strong> est estimé à <%= card.price %> €</button>
+        <button class="btn btn-secondary" data-bs-target="#normalModalToggle" data-bs-toggle="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#normalModalToggle">
+  <%= card.printed_name %>
+</button>

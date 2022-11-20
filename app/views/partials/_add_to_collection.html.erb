@@ -4,6 +4,10 @@
       <%= f.hidden_field :name, value: card["card_faces"][0]["name"] %>
       <%= f.hidden_field :printed_name, value: card["card_faces"][0]["printed_name"] %>
       <%= f.hidden_field :image_uris, value: card["card_faces"][0]["image_uris"]["normal"] %>
+    <% elsif card["layout"] == "adventure" %>
+      <%= f.hidden_field :name, value: card["card_faces"][0]["name"] %>
+      <%= f.hidden_field :printed_name, value: card["card_faces"][0]["printed_name"] %>
+      <%= f.hidden_field :image_uris, value: card["image_uris"]["normal"] %>
     <% else %>
       <%= f.hidden_field :name, value: card["name"] %>
       <%= f.hidden_field :printed_name, value: card["printed_name"] %>

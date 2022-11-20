@@ -63,10 +63,7 @@ class CardsController < ApplicationController
     elsif Card.where(name: @card.name, user_id: current_user.id).blank?
       @card.quantity += 1
       @card.save
-    elsif @card.save
-      flash[:notice] = 'La carte a été ajoutée à votre collection'
-    else
-      flash[:alert] = 'La carte n\'a pas pu être ajoutée à votre collection'
+
     end
   end
 

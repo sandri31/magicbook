@@ -9,6 +9,10 @@ class Card < ApplicationRecord
 
   def total_prices
     price_total = 0
+    # si la carte a un prix nil, on ne l'ajoute pas au total
+    if self.price.nil?
+      return 0
+    end
     self.quantity.times do
       price_total += self.price
     end

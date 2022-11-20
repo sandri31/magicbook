@@ -1,7 +1,6 @@
 <div class="container text-center my-5">
-  <h1 class="display-4"><strong>Bienvenue sur la page de</strong></h1>
-  <h1><strong><span class=" pb-3 background-gradient">votre Top 10 Magic.</span></strong></h1>
-  <p class="lead mb-5">Tu as la possibilité d'aller voir directement par couleur toutes tes cartes et modifier leurs quantités :</p>
+  <h1><strong><span class=" pb-3 background-gradient">Le Top 10 de tes cartes Magic :</span></strong></h1>
+  <p class="lead my-5">Tu as la possibilité d'aller voir directement par couleur toutes tes cartes et modifier leurs quantités :</p>
   <p class="lead mb-5"><u>Cette page est en construction, ceci est qu'un exemple du résultat final :</u></p>
   <label>
     <a class="btn" href="#scrollButtonWhite" role="button">
@@ -37,84 +36,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
+        <!-- Display the top 10 most expensive cards, sorted by color -->
+        <% @cards = @user.cards.where(color_identity: "W").order(price: :desc).limit(10) %>
+        <!-- Si la carte n'a pas de prix, on passe à la suivante -->
+        <% @cards.each_with_index do |card, index| %>
+          <% if card.price.nil? %>
+            <% next %>
+          <% end %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
@@ -133,84 +68,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
+        <!-- Display the top 10 most expensive cards, sorted by color -->
+        <% @cards = @user.cards.where(color_identity: "U").order(price: :desc).limit(10) %>
+        <% @cards.each_with_index do |card, index| %>
+          <% if card.price.nil? %>
+            <% next %>
+          <% end %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
@@ -229,84 +99,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
+        <!-- Display the top 10 most expensive cards, sorted by color -->
+        <% @cards = @user.cards.where(color_identity: "B").order(price: :desc).limit(10) %>
+        <% @cards.each_with_index do |card, index| %>
+          <% if card.price.nil? %>
+            <% next %>
+          <% end %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
@@ -325,84 +130,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
+        <!-- Display the top 10 most expensive cards, sorted by color -->
+        <% @cards = @user.cards.where(color_identity: "R").order(price: :desc).limit(10) %>
+        <% @cards.each_with_index do |card, index| %>
+          <% if card.price.nil? %>
+            <% next %>
+          <% end %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
@@ -421,84 +161,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
+        <!-- Display the top 10 most expensive cards, sorted by color -->
+        <% @cards = @user.cards.where(color_identity: "G").order(price: :desc).limit(10) %>
+        <% @cards.each_with_index do |card, index| %>
+          <% if card.price.nil? %>
+            <% next %>
+          <% end %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
@@ -517,90 +192,28 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
+        <!-- Display the top 10 most expensive cards, sorted by color if color_identity.length > 1 -->
+        <% @cards = @user.cards.where("color_identity != 'W' AND color_identity != 'U'
+                                                             AND color_identity != 'B'
+                                                             AND color_identity != 'R'
+                                                             AND color_identity != 'G'").order(price: :desc).limit(10) %>
+        <% @cards.each_with_index do |card, index| %>
+          <% if card.price.nil? %>
+            <% next %>
+          <% end %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
-  <!-- Artefact -->
-  <a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary" id="scrollButtonArtefact" href="#scrollButtonArtefact" role="button">
-    <p class="h1">Artefact</p>
+  <!-- Incolore -->
+  <a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary" id="scrollButtonIncolore" href="#scrollButtonIncolore" role="button">
+    <p class="h1">Incolore</p>
   </a>
   <div class="container table-responsive-sm">
     <table class="table table-dark table-hover">
@@ -613,86 +226,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>#1</td>
-          <td>A la grâce de dieux</td>
-          <td>1</td>
-          <td>24$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#2</td>
-          <td>Ange de la restoration</td>
-          <td>1</td>
-          <td>22$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#3</td>
-          <td>Bénédiction de l'écaille</td>
-          <td>2</td>
-          <td>18,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#4</td>
-          <td>Capitaine de la relève</td>
-          <td>1</td>
-          <td>14$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#5</td>
-          <td>Chemin vers l'exil</td>
-          <td>2</td>
-          <td>8$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#6</td>
-          <td>Dernier souffle</td>
-          <td>1</td>
-          <td>7,50$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#7</td>
-          <td>Dime étouffante</td>
-          <td>3</td>
-          <td>6,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#8</td>
-          <td>Episseur de capteurs</td>
-          <td>2</td>
-          <td>4,10$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#9</td>
-          <td>Frère d'armes ainok</td>
-          <td>1</td>
-          <td>3,25$</td>
-        </tr>
-      </tbody>
-      <tbody>
-        <tr>
-          <td>#10</td>
-          <td>Mur d'augures</td>
-          <td>4</td>
-          <td>1.20$</td>
-        </tr>
+        <!-- Display the top 10 most expensive cards, sorted by color -->
+        <% @cards = @user.cards.where(color_identity: "").order(price: :desc).limit(10) %>
+        <% @cards.each_with_index do |card, index| %>
+          <% if card.price.nil? %>
+            <% next %>
+          <% end %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= card.printed_name %></td>
+            <td><%= card.quantity %></td>
+            <td><%= card.price %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
-
 </div>

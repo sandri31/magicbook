@@ -2,7 +2,7 @@
   <div class="container">
     <%= render "partials/not_found" %>
   </div>
-<% else %>
+<% elsif @cards["total_cards"] > 4 %>
   <div class="container">
     <%= render "partials/scroll_to_top" %>
   </div>

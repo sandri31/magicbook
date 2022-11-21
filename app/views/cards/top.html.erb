@@ -26,7 +26,9 @@
         <!-- Si la carte n'a pas de prix, on passe à la suivante -->
         <% @cards.each_with_index do |card, index| %>
           <% if card.price.nil? %>
-            <% next %>
+            <% card.price = 0.001 %>
+            <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+            <% card.save %>
           <% end %>
           <tr>
             <td><%= index + 1 %></td>
@@ -57,7 +59,9 @@
         <% @cards = @user.cards.where(color_identity: "U").order(price: :desc).limit(10) %>
         <% @cards.each_with_index do |card, index| %>
           <% if card.price.nil? %>
-            <% next %>
+            <% card.price = 0.001 %>
+            <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+            <% card.save %>
           <% end %>
           <tr>
             <td><%= index + 1 %></td>
@@ -88,7 +92,9 @@
         <% @cards = @user.cards.where(color_identity: "B").order(price: :desc).limit(10) %>
         <% @cards.each_with_index do |card, index| %>
           <% if card.price.nil? %>
-            <% next %>
+            <% card.price = 0.001 %>
+            <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+            <% card.save %>
           <% end %>
           <tr>
             <td><%= index + 1 %></td>
@@ -119,7 +125,9 @@
         <% @cards = @user.cards.where(color_identity: "R").order(price: :desc).limit(10) %>
         <% @cards.each_with_index do |card, index| %>
           <% if card.price.nil? %>
-            <% next %>
+            <% card.price = 0.001 %>
+            <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+            <% card.save %>
           <% end %>
           <tr>
             <td><%= index + 1 %></td>
@@ -150,7 +158,9 @@
         <% @cards = @user.cards.where(color_identity: "G").order(price: :desc).limit(10) %>
         <% @cards.each_with_index do |card, index| %>
           <% if card.price.nil? %>
-            <% next %>
+            <% card.price = 0.001 %>
+            <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+            <% card.save %>
           <% end %>
           <tr>
             <td><%= index + 1 %></td>
@@ -184,7 +194,9 @@
                                                              AND color_identity != 'G'").order(price: :desc).limit(10) %>
         <% @cards.each_with_index do |card, index| %>
           <% if card.price.nil? %>
-            <% next %>
+            <% card.price = 0.001 %>
+            <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+            <% card.save %>
           <% end %>
           <tr>
             <td><%= index + 1 %></td>
@@ -215,7 +227,9 @@
         <% @cards = @user.cards.where(color_identity: "").order(price: :desc).limit(10) %>
         <% @cards.each_with_index do |card, index| %>
           <% if card.price.nil? %>
-            <% next %>
+            <% card.price = 0.001 %>
+            <% flash[:notice] = "La carte #{card.printed_name} n'a pas de prix par defaut, elle sera donc considérée comme la carte la moins chère de votre collection." %>
+            <% card.save %>
           <% end %>
           <tr>
             <td><%= index + 1 %></td>

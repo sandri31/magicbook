@@ -1,12 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="container text-center my-5">
+  <h1><strong><span class=" pb-3 background-gradient">Ta recherche de cartes : (<%= @cards["total_cards"] %>)</span></strong></h1>
+  <p class="lead my-5">Voici les cartes que nous avons trouvé pour vous !</p>
 
-<div class="container">
-  <div class="px-4 py-5 border-bottom">
-    <h1 class="display-5 fw-bold">Recherche tes cartes (<%= @cards["total_cards"] %>)</h1>
     <div class="row">
-      <div class="col-md-6">
+    <!-- Affiche la barre de recherche au milieu de la page -->
+      <div class="col-md-6 offset-md-3">
         <%= form_tag(new_card_path, method: :get) do %>
-          <div class="input-group mb-3">
+          <div class="input-group">
             <%= text_field_tag :search, params[:search], placeholder: "Recherche", class: "form-control" %>
             <%= submit_tag "Rechercher", class: "btn btn-outline-secondary" %>
           </div>
@@ -16,6 +16,6 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-3 mt-3">
       <%= render "partials/modals_cards" %>
     </div>
-  </div>
+
 </div>
 <%= render "partials/scroll_to_top" if @cards["total_cards"] > 4 %>

@@ -1,3 +1,4 @@
+<%= render "partials/hero" %>
 <div class="landing py-5 my-5">
   <section id="home_hero" class="hero text-center pb-5">
     <h1 class="display-1 fw-800 mb-3" style="line-height: 1.05;">
@@ -16,6 +17,19 @@
     </div>
   </section>
 </div>
+
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta">
+  <div class="container">
+
+    <div class="text-center" data-aos="zoom-in">
+      <h3>Call To Action</h3>
+      <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <a class="cta-btn" href="#">Call To Action</a>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
 
 <!-- START THE FEATURETTES -->
 
@@ -145,3 +159,44 @@
 <!-- /END CAROUSEL -->
 
 <%= render "partials/scroll_to_top" %>
+
+<script>
+
+(function() {
+  /**
+   * Easy selector helper function
+   */
+  const select = (el, all = false) => {
+    el = el.trim()
+    if (all) {
+      return [...document.querySelectorAll(el)]
+    } else {
+      return document.querySelector(el)
+    }
+  }
+
+  /**
+   * Easy on scroll event listener
+   */
+  const onscroll = (el, listener) => {
+    el.addEventListener('scroll', listener)
+  }
+
+  /**
+   * Toggle .header-scrolled class to #header when page is scrolled
+   */
+  let selectHeader = select('#header')
+  if (selectHeader) {
+    const headerScrolled = () => {
+      if (window.scrollY > 100) {
+        selectHeader.classList.add('header-scrolled')
+      } else {
+        selectHeader.classList.remove('header-scrolled')
+      }
+    }
+    window.addEventListener('load', headerScrolled)
+    onscroll(document, headerScrolled)
+  }
+
+})()
+</script>

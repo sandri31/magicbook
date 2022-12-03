@@ -1,8 +1,7 @@
-<div class="container text-center my-5">
+<div class="container text-center" style="margin-top: 150px;">
   <h1><strong><span class=" pb-3 background-gradient">Ta recherche de cartes :</span></strong></h1>
   <p class="lead">Voici les <%= @cards["total_cards"] %> cartes que nous avons trouvé pour vous !</p>
     <div class="row">
-    <!-- Affiche la barre de recherche au milieu de la page -->
       <div class="col-md-6 offset-md-3 my-5">
         <%= form_tag(new_card_path, method: :get) do %>
           <div class="input-group">

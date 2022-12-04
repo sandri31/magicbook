@@ -1,14 +1,12 @@
 <div class="container text-center" style="margin-top: 150px;">
-  <h1><strong><span class=" pb-3 background-gradient">Le Top 10 de tes cartes Magic :</span></strong></h1>
-  <p class="lead my-5">Tu as la possibilité d'aller voir directement par couleur toutes tes cartes et modifier leurs quantités :</p>
+  <h1><strong><span class=" pb-3 background-gradient my-5">Le Top 10 de tes cartes Magic :</span></strong></h1>
+  <p class="lead">Tu as la possibilité d'aller voir directement par couleur toutes tes cartes et modifier leurs quantités :</p>
 
   <%= render "partials/color_button" %>
 
-  <p class="lead mb-5 my-5">Voici un aperçu du <strong>top 10</strong> de vos cartes les plus chères :</p>
-
   <!-- ======= Top White ======= -->
-  <a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
-    <p class="h1">Blanc</p>
+  <a class="box-white container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
+    <h2 class="text-center">Top 10 des cartes blanches</h2>
   </a>
   <div class="container table-responsive-sm">
     <table class="table table-dark table-hover">
@@ -23,7 +21,6 @@
       <tbody>
         <!-- Display the top 10 most expensive cards, sorted by color -->
         <% @cards = @user.cards.where(color_identity: "W").order(price: :desc).limit(10) %>
-        <!-- Si la carte n'a pas de prix, on passe à la suivante -->
         <% @cards.each_with_index do |card, index| %>
           <% if card.price.nil? %>
             <% card.price = 0.001 %>
@@ -42,8 +39,8 @@
   </div><!-- End Top White -->
 
   <!-- ======= Top Blue ======= -->
-  <a class="container-fluid bg-primary text-center text-white p-3 btn btn-primary" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
-    <p class="h1">Blue</p>
+  <a class="box-blue container-fluid bg-primary text-center text-white p-3 btn btn-primary" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
+    <h2 class="text-center">Top 10 des cartes bleues</h2>
   </a>
   <div class="container table-responsive-sm">
     <table class="table table-dark table-hover">
@@ -76,8 +73,8 @@
   </div><!-- End Top Blue -->
 
   <!-- ======= Top Black ======= -->
-  <a class="container-fluid bg-dark text-center text-white p-3 btn btn-dark" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
-    <p class="h1">Noir</p>
+  <a class="box-black container-fluid bg-dark text-center text-white p-3 btn btn-dark" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
+    <h2 class="text-center">Top 10 des cartes noires</h2>
   </a>
   <div class="container table-responsive-sm">
     <table class="table table-dark table-hover">
@@ -110,8 +107,8 @@
   </div><!-- End Top Black -->
 
   <!-- ======= Top Red ======= -->
-  <a class="container-fluid bg-danger text-center text-white p-3 btn btn-danger" id="scrollButtonRed" href="#scrollButtonRed" role="button">
-    <p class="h1">Rouge</p>
+  <a class="box-red container-fluid bg-danger text-center text-white p-3 btn btn-danger" id="scrollButtonRed" href="#scrollButtonRed" role="button">
+    <h2 class="text-center">Top 10 des cartes rouges</h2>
   </a>
   <div class="container table-responsive-sm">
     <table class="table table-dark table-hover">
@@ -144,8 +141,8 @@
   </div><!-- End Top Red -->
 
   <!-- ======= Top Green ======= -->
-  <a class="container-fluid bg-success text-center text-white p-3 btn btn-success" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
-    <p class="h1">Vert</p>
+  <a class="box-green container-fluid bg-success text-center text-white p-3 btn btn-success" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
+    <h2 class="text-center">Top 10 des cartes vertes</h2>
   </a>
   <div class="container table-responsive-sm">
     <table class="table table-dark table-hover">
@@ -178,8 +175,8 @@
   </div><!-- End Top Green -->
 
   <!-- ======= Top Multicolor ======= -->
-  <a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning" id="scrollButtonMulticolor" href="#scrollButtonMulticolor" role="button">
-    <p class="h1">Multi-couleur</p>
+  <a class="box-multicolor container-fluid bg-warning text-center text-black p-3 btn btn-warning" id="scrollButtonMulticolor" href="#scrollButtonMulticolor" role="button">
+    <h2 class="text-center">Top 10 des cartes multicolores</h2>
   </a>
   <div class="container table-responsive-sm">
     <table class="table table-dark table-hover">
@@ -215,8 +212,8 @@
   </div><!-- End Top Multicolor -->
 
   <!-- ======= Top Colorless ======= -->
-  <a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary" id="scrollButtonColorless" href="#scrollButtonColorless" role="button">
-    <p class="h1">Incolore</p>
+  <a class="box-colorless container-fluid bg-secondary text-center text-white p-3 btn btn-secondary" id="scrollButtonColorless" href="#scrollButtonColorless" role="button">
+    <h2 class="text-center">Top 10 des cartes incolore</h2>
   </a>
   <div class="container table-responsive-sm">
     <table class="table table-dark table-hover">

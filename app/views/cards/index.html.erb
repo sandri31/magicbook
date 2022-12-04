@@ -11,7 +11,7 @@
   <h2>Ta collection actuellement est estimé à <%= @total_price %> €</h2>
 </div>
 
-<!-- White -->
+<!-- ======= White ======= -->
 <a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
   <p class="h1">Blanc (<%= @white_card.sum(:quantity) %>)</p>
 </a>
@@ -41,9 +41,9 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</div><!-- End White -->
 
-<!-- Blue -->
+<!-- ======= Blue ======= -->
 <a class="container-fluid bg-primary text-center text-white p-3 btn btn-primary mt-2" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
   <p class="h1">Bleu (<%= @blue_card.sum(:quantity) %>)</p>
 </a>
@@ -73,9 +73,9 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</div><!-- End Blue -->
 
-<!-- Black -->
+<!-- ======= Black ======= -->
 <a class="container-fluid bg-dark text-center text-white p-3 btn btn-dark mt-2" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
   <p class="h1">Noir (<%= @black_card.sum(:quantity) %>)</p>
 </a>
@@ -105,9 +105,9 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</div><!-- End Black -->
 
-<!-- Red -->
+<!-- ======= Red ======= -->
 <a class="container-fluid bg-danger text-center text-white p-3 btn btn-danger mt-2" id="scrollButtonRed" href="#scrollButtonRed" role="button">
   <p class="h1">Rouge (<%= @red_card.sum(:quantity) %>)</p>
 </a>
@@ -137,9 +137,9 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</div><!-- End Red -->
 
-<!-- Green -->
+<!-- ======= Green ======= -->
 <a class="container-fluid bg-success text-center text-white p-3 btn btn-success mt-2" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
   <p class="h1">Vert (<%= @green_card.sum(:quantity) %>)</p>
 </a>
@@ -169,9 +169,9 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</div><!-- End Green -->
 
-<!-- Multicolor -->
+<!-- ======= Multicolor ======= -->
 <a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning mt-2" id="scrollButtonMulticolor" href="#scrollButtonMulticolor" role="button">
   <p class="h1">Multicolore (<%= @multicolor_card.sum(:quantity) %>)</p>
 </a>
@@ -201,9 +201,9 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</div><!-- End Multicolor -->
 
-<!-- Colorless -->
+<!-- ======= Colorless ======= -->
 <a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary mt-2" id="scrollButtonColorless" href="#scrollButtonColorless" role="button">
   <p class="h1">Incolore (<%= @colorless_card.sum(:quantity) %>)</p>
 </a>
@@ -233,5 +233,6 @@
       <% end %>
     </tbody>
   </table>
-</div>
+</div><!-- End Colorless -->
+
 <%= render "partials/scroll_to_top" %>

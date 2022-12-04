@@ -1,24 +1,35 @@
-<div class="landing py-5 my-5">
-  <section id="home_hero" class="hero text-center pb-5">
-    <h1 class="display-1 fw-800 mb-3" style="line-height: 1.05;">
-      <span class="d-block">Mettez en avant</span>
-      <span class="d-block pb-3 background-gradient">votre collection Magic.</span>
-    </h1>
-    <div class="col-lg-6 mx-auto">
-      <p class="fs-4 mt-5" style="line-height: 1.25;">
-        <span class="d-block">Recherchons ensemble toutes tes cartes une par une.</span>
-        <span class="d-block pb-2">Et évaluons le prix de ta collection !</span>
-      </p>
-      <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mt-4">
-        <%= link_to "Recherche tes cartes →", new_card_path, class: "btn btn-dark btn-lg" %>
-        <%= link_to "Evalue ta collection", cards_path, class: "btn btn-outline-dark btn-lg ms-0 ms-md-2 mt-2 mt-md-0" %>
+<%= render "partials/hero" %>
+<section class="hero text-center pb-5">
+  <div class="landing py-5 my-5">
+      <h1 class="display-1 fw-800 mb-3" style="line-height: 1.05;">
+        <span class="d-block">Mettez en avant</span>
+        <span class="d-block pb-3 background-gradient">votre collection Magic.</span>
+      </h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-4 mt-5" style="line-height: 1.25;">
+          <span class="d-block">Recherchons ensemble toutes tes cartes une par une.</span>
+          <span class="d-block pb-2">Et évaluons le prix de ta collection !</span>
+        </p>
+        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mt-4" id="about">
+          <%= link_to "Recherche tes cartes →", new_card_path, class: "btn btn-dark btn-lg" %>
+          <%= link_to "Evalue ta collection", cards_path, class: "btn btn-outline-dark btn-lg ms-0 ms-md-2 mt-2 mt-md-0" %>
+        </div>
       </div>
+  </div>
+</section>
+
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta">
+  <div class="container">
+    <div class="text-center" data-aos="zoom-in">
+      <h3>Appel à l'action</h3>
+      <p>Ne soyez pas en attente de la carte providentielle, soyez actif ! Rajouter tes cartes comme indiquer ci-dessus et viens voir ton top 10 des cartes les chères de ta collection ! Et peut-être que tu trouveras la carte qui te sembler banale mais qui vaut un max !</p>
+      <a class="cta-btn" href="<%= top_cards_path %>">Top 10</a>
     </div>
-  </section>
-</div>
+  </div>
+</section><!-- End Cta Section -->
 
-<!-- START THE FEATURETTES -->
-
+<!-- ======= THE FEATURETTES ======= -->
 <div class="container marketing">
   <div class="flex-center flex-column py-4 mb-3">
     <div class="row featurette">
@@ -87,17 +98,14 @@
       </div>
     </div>
   </div>
-</div>
-
-<!-- /END THE FEATURETTES -->
+</div><!-- End THE FEATURETTES -->
 
 <hr class="featurette-divider py-4">
 
-<!-- START CAROUSEL -->
-
+<!-- ======= Carousel ======= -->
 <div class="container">
   <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <!-- Indicateurs -->
+    <!-- Indicators -->
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
@@ -141,7 +149,47 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </button>
   </div>
-</div>
-<!-- /END CAROUSEL -->
+</div><!-- End Carousel -->
 
 <%= render "partials/scroll_to_top" %>
+
+<script>
+
+(function() {
+  /**
+   * Easy selector helper function
+   */
+  const select = (el, all = false) => {
+    el = el.trim()
+    if (all) {
+      return [...document.querySelectorAll(el)]
+    } else {
+      return document.querySelector(el)
+    }
+  }
+
+  /**
+   * Easy on scroll event listener
+   */
+  const onscroll = (el, listener) => {
+    el.addEventListener('scroll', listener)
+  }
+
+  /**
+   * Toggle .header-scrolled class to #header when page is scrolled
+   */
+  let selectHeader = select('#header')
+  if (selectHeader) {
+    const headerScrolled = () => {
+      if (window.scrollY > 100) {
+        selectHeader.classList.add('header-scrolled')
+      } else {
+        selectHeader.classList.remove('header-scrolled')
+      }
+    }
+    window.addEventListener('load', headerScrolled)
+    onscroll(document, headerScrolled)
+  }
+
+})()
+</script>

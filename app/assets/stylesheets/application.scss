@@ -38,6 +38,10 @@ h6 {
   -webkit-background-clip: text;
   background-clip: text;
 }
+.container table tbody tr td form .form-control {
+  display: inline-flex;
+  width: 45%;
+}
 
 /*--------------------------------------------------------------
 # Page specific styles construction

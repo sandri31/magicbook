@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   # Public pages
   root 'public#index'
   get 'random', to: 'public#random'
+  get 'contact', to: 'contacts#new', as: 'contact'
+  resources :contacts, only: [:new, :create]
 end

@@ -1,3 +1,11 @@
+<% if new_card_path %>
+  <style type="text/css">
+    #header {
+      position: relative;
+    }
+  </style>
+<% end %>
+
 <div class="container text-center" style="margin-top: 150px;">
   <h1><strong><span class=" pb-3 background-gradient">Ta recherche de cartes :</span></strong></h1>
   <p class="lead">Voici les <%= @cards["total_cards"] %> cartes que nous avons trouvé pour vous !</p>

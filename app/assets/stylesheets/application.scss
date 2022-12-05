@@ -42,6 +42,9 @@ h6 {
   display: inline-flex;
   width: 45%;
 }
+#modal {
+  overflow: hidden;
+}
 
 /*--------------------------------------------------------------
 # Page specific styles construction
@@ -134,7 +137,7 @@ body {
   $offsetBottom: 2rem;
   $offsetHorizontal: 2rem;
   $scrollToRevealDistance: 17rem; // scroll offset to reveal scroll-to-top link
-  $color: #007bff;
+  $color: #3a9970;
   box-sizing: border-box;
   position: absolute;
   top: $scrollToRevealDistance;
@@ -336,7 +339,7 @@ body {
 #hero {
   width: 100%;
   height: 80vh;
-  background: url("https://images.ctfassets.net/s5n2t79q9icq/4TdkgDCfZNHGRW1HcRqVD2/1c01514429c7a87cf3930d3956c55f07/ddnAv0gyc_1920x700.jpg?q=80&w=1920&h=700&fit=crop&f=center&fm=avif") center center;
+  background: url("https://images.ctfassets.net/s5n2t79q9icq/4TdkgDCfZNHGRW1HcRqVD2/1c01514429c7a87cf3930d3956c55f07/ddnAv0gyc_1920x700.jpg?q=80&w=1920&h=700&fit=crop&f=center&fm=avif") fixed center center;
   background-size: cover;
   position: relative;
 }
@@ -449,4 +452,12 @@ body {
   top: 50%;
   width: 50%;
   margin-left: 25%;
+}
+.alert .alert-success {
+  background-color: #009970;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
 }

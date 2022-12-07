@@ -1,4 +1,6 @@
 <%= render "partials/hero" %>
+
+<!-- ======= Hero Section ======= -->
 <section class="hero text-center pb-5">
   <div class="landing py-5 my-5">
       <h1 class="display-1 fw-800 mb-3" style="line-height: 1.05;">
@@ -16,7 +18,7 @@
         </div>
       </div>
   </div>
-</section>
+</section><!-- End Hero Section -->
 
 <!-- ======= Cta Section ======= -->
 <section id="cta" class="cta">
@@ -152,44 +154,3 @@
 </div><!-- End Carousel -->
 
 <%= render "partials/scroll_to_top" %>
-
-<script>
-
-(function() {
-  /**
-   * Easy selector helper function
-   */
-  const select = (el, all = false) => {
-    el = el.trim()
-    if (all) {
-      return [...document.querySelectorAll(el)]
-    } else {
-      return document.querySelector(el)
-    }
-  }
-
-  /**
-   * Easy on scroll event listener
-   */
-  const onscroll = (el, listener) => {
-    el.addEventListener('scroll', listener)
-  }
-
-  /**
-   * Toggle .header-scrolled class to #header when page is scrolled
-   */
-  let selectHeader = select('#header')
-  if (selectHeader) {
-    const headerScrolled = () => {
-      if (window.scrollY > 100) {
-        selectHeader.classList.add('header-scrolled')
-      } else {
-        selectHeader.classList.remove('header-scrolled')
-      }
-    }
-    window.addEventListener('load', headerScrolled)
-    onscroll(document, headerScrolled)
-  }
-
-})()
-</script>

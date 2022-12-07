@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  # Ajoute la route pour aller vers la page top
+
   resources :cards do
     collection do
       get 'top'

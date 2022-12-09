@@ -6,6 +6,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
+  background-color: #f8f9fa;
 }
 *, *:before, *:after {
   box-sizing: border-box;
@@ -270,7 +271,7 @@ body {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #009970;
+  color: #b24073;
 }
 .navbar .getstarted,
 .navbar .getstarted:focus {
@@ -388,8 +389,8 @@ body {
   color: #fff;
 }
 #hero .btn-get-started:hover {
-  background: #009970;
-  border: 2px solid #009970;
+  background: linear-gradient(to top right,#ef4444, #4338ca);
+  border: 2px solid black;
 }
 @media (min-width: 1024px) {
   #hero {
@@ -442,8 +443,8 @@ body {
   color: #fff;
 }
 .cta .cta-btn:hover {
-  background: #009970;
-  border: 2px solid #009970;
+  background: linear-gradient(to top right,#ef4444, #4338ca);
+  border: 2px solid black;
 }
 
 /*--------------------------------------------------------------

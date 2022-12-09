@@ -38,7 +38,10 @@ h6 {
   -webkit-background-clip: text;
   background-clip: text;
 }
-.container table tbody tr td form .form-control {
+.table > :not(caption) > * > * {
+  padding: 0.5rem 0;
+}
+table tbody tr td form .form-control {
   display: inline-flex;
   width: 50%;
 }

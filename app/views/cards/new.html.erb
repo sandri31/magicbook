@@ -7,8 +7,8 @@
 <% end %>
 
 <div class="container text-center" style="margin-top: 150px;">
-  <h1><strong><span class=" pb-3 background-gradient">Ta recherche de cartes :</span></strong></h1>
-  <p class="lead">Voici les <%= @cards["total_cards"] %> cartes que nous avons trouvé pour vous !</p>
+  <h1 class="text-center display-2 mb-3">Recherche tes <span class="pb-3 background-gradient">propres cartes</span></h1>
+  <h4 class="lead"><strong>Voici les <%= @cards["total_cards"] %> cartes que nous avons trouvé pour vous !</strong></h4>
     <div class="row">
       <div class="col-md-6 offset-md-3 my-5">
         <%= form_tag(new_card_path, method: :get) do %>

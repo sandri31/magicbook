@@ -56,14 +56,17 @@ class CardsController < ApplicationController
 
     # If the card already exists in the database, we update the quantity
     if Card.where(name: @card.name, user_id: current_user.id).present?
-      flash[:notice] = 'La carte a été ajoutée à votre collection'
       @card = Card.where(name: @card.name, user_id: current_user.id).first
       @card.quantity += 1
       @card.save
+      flash[:notice] = 'Carte ajoutée à votre collection!'
+      redirect_to new_card_path
     # If the card does not exist in the database, we create it
     elsif Card.where(name: @card.name, user_id: current_user.id).blank?
       @card.quantity += 1
       @card.save
+      flash[:notice] = 'Carte ajoutée à votre collection!'
+      redirect_to new_card_path
     end
   end
 

@@ -20,10 +20,7 @@ class CardsController < ApplicationController
     @colorless_card =  Card.colorless.where(user_id: @user.id)
     @multicolor_card = Card.multicolor.where(user_id: @user.id)
 
-    @total_price = 0
-    @cards.each do |card|
-      @total_price += card.total_prices
-    end
+    @total_price = @cards.sum(&:total_price)
   end
 
   # GET /cards/1 or /cards/1.json

@@ -2,6 +2,7 @@
 
 class Card < ApplicationRecord
   belongs_to :user
+  delegate :total_price, :to => :cards, :prefix => true
   scope :white, -> { where(color_identity: 'W') }
   scope :blue, -> { where(color_identity: 'U') }
   scope :black, -> { where(color_identity: 'B') }
@@ -17,14 +18,8 @@ class Card < ApplicationRecord
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :printed_name, presence: true, uniqueness: { scope: :user_id }
 
-  def total_prices
-    price_total = 0
-    return 0 if price.nil?
-
-    quantity.times do
-      price_total += price
-    end
-    price_total
+  def total_price
+    self.price * self.quantity
   end
 
   # If the quantity is 0, we destroy the card

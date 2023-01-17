@@ -3,7 +3,7 @@
 class CardsController < ApplicationController
   before_action :set_card, only: %i[show edit update destroy]
   before_action :search_params, only: %i[new]
-  before_action :require_same_user, only: %i[edit update destroy]
+  before_action :require_user_permission, only: %i[edit update destroy]
   before_action :authenticate_user!, only: %i[index top]
 
   # GET /cards or /cards.json
@@ -72,17 +72,17 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
   end
 
+  def require_user_permission
+    return if @card.user.can_modify?(current_user)
+
+    flash[:danger] = "Vous n'avez pas les autorisations pour effectuer cette action"
+    redirect_to root_path
+  end
+
   # Only allow a list of trusted parameters through.
   def card_params
     params.require(:card).permit(:printed_name, :name, :user_id, :image_uris, :multiverse_ids, :quantity, :price,
                                  :color_identity)
-  end
-
-  def require_same_user
-    return unless current_user != @card.user
-
-    flash[:danger] = 'Vous ne pouvez modifier que vos propres cartes'
-    redirect_to root_path
   end
 
   # This method allows you to retrieve the search parameters

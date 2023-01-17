@@ -37,31 +37,15 @@ class CardsController < ApplicationController
 
   # POST /cards or /cards.json
   def create
-    @card = Card.new(card_params)
-    @card.user = current_user
     @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
-
-    # if the card is the price is present in the API, we add it to the database
     if @card_price['prices']['eur'].present?
-      @card.price = @card_price['prices']['eur']
+      @card_params[:price] = @card_price['prices']['eur']
     elsif @card_price['prices']['eur_foil'].present?
-      @card.price = @card_price['prices']['eur_foil']
+      @card_params[:price] = @card_price['prices']['eur_foil']
     end
-
-    # If the card already exists in the database, we update the quantity
-    if Card.where(name: @card.name, user_id: current_user.id).present?
-      @card = Card.where(name: @card.name, user_id: current_user.id).first
-      @card.quantity += 1
-      @card.save
-      flash[:notice] = 'Carte ajoutée à votre collection!'
-      redirect_to new_card_path
-    # If the card does not exist in the database, we create it
-    elsif Card.where(name: @card.name, user_id: current_user.id).blank?
-      @card.quantity += 1
-      @card.save
-      flash[:notice] = 'Carte ajoutée à votre collection!'
-      redirect_to new_card_path
-    end
+    @card = Card.find_or_create(@card_params, current_user)
+    flash[:notice] = 'Carte ajoutée à votre collection!'
+    redirect_to new_card_path
   end
 
   # PATCH/PUT /cards/1 or /cards/1.json

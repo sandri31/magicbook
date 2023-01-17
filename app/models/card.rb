@@ -28,4 +28,10 @@ class Card < ApplicationRecord
 
     destroy
   end
+
+  def self.find_or_create(card_params, current_user)
+    card = Card.find_by(name: card_params[:name], user_id: current_user.id)
+    card = Card.create(card_params.merge(user_id: current_user.id)) unless card
+    card
+  end
 end

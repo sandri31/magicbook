@@ -12,16 +12,13 @@ class CardsController < ApplicationController
     @cards = Card.where(user_id: @user.id)
 
     # Sort the cards by name
-    @white_card =      Card.where(color_identity: 'W', user_id: @user.id)
-    @blue_card =       Card.where(color_identity: 'U', user_id: @user.id)
-    @black_card =      Card.where(color_identity: 'B', user_id: @user.id)
-    @red_card =        Card.where(color_identity: 'R', user_id: @user.id)
-    @green_card =      Card.where(color_identity: 'G', user_id: @user.id)
-    @colorless_card =  Card.where(color_identity: '', user_id: @user.id)
-    @multicolor_card = Card.where(printed_name: @cards.where.not(color_identity: 'W')
-                            .where.not(color_identity: 'U').where.not(color_identity: 'B')
-                            .where.not(color_identity: 'R').where.not(color_identity: 'G')
-                            .where.not(color_identity: '').pluck(:printed_name), user_id: @user.id)
+    @white_card =      Card.white.where(user_id: @user.id)
+    @blue_card =       Card.blue.where(user_id: @user.id)
+    @black_card =      Card.black.where(user_id: @user.id)
+    @red_card =        Card.red.where(user_id: @user.id)
+    @green_card =      Card.green.where(user_id: @user.id)
+    @colorless_card =  Card.colorless.where(user_id: @user.id)
+    @multicolor_card = Card.multicolor.where(user_id: @user.id)
 
     @total_price = 0
     @cards.each do |card|

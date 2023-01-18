@@ -37,30 +37,10 @@ class CardsController < ApplicationController
 
   # POST /cards or /cards.json
   def create
-    @card = Card.new(card_params)
-    @card.user = current_user
-    @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
-
-    # if the card is the price is present in the API, we add it to the database
-    if @card_price['prices']['eur'].present?
-      @card.price = @card_price['prices']['eur']
-    elsif @card_price['prices']['eur_foil'].present?
-      @card.price = @card_price['prices']['eur_foil']
-    end
-
-    # If the card already exists in the database, we update the quantity
-    if Card.where(name: @card.name, user_id: current_user.id).present?
-      @card = Card.where(name: @card.name, user_id: current_user.id).first
-      @card.quantity += 1
-      @card.save
-      flash[:notice] = 'Carte ajoutée à votre collection!'
-      redirect_to new_card_path
-    # If the card does not exist in the database, we create it
-    elsif Card.where(name: @card.name, user_id: current_user.id).blank?
-      @card.quantity += 1
-      @card.save
-      flash[:notice] = 'Carte ajoutée à votre collection!'
-      redirect_to new_card_path
+    if Card.where(name: card_params[:name], user_id: current_user.id).present?
+      update_card
+    else
+      create_card
     end
   end
 
@@ -82,6 +62,31 @@ class CardsController < ApplicationController
   end
 
   private
+
+  def create_card
+    @card = Card.new(card_params)
+    @card.user = current_user
+    @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
+
+    if @card_price['prices']['eur'].present?
+      @card.price = @card_price['prices']['eur']
+    elsif @card_price['prices']['eur_foil'].present?
+      @card.price = @card_price['prices']['eur_foil']
+    end
+
+    @card.quantity += 1
+    @card.save
+    flash[:notice] = 'Carte ajoutée à votre collection!'
+    redirect_to new_card_path
+  end
+
+  def update_card
+    @card = Card.where(name: card_params[:name], user_id: current_user.id).first
+    @card.quantity += 1
+    @card.save
+    flash[:notice] = 'Carte ajoutée à votre collection!'
+    redirect_to new_card_path
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_card

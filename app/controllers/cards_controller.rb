@@ -22,7 +22,7 @@ class CardsController < ApplicationController
 
   # GET /cards/new
   def new
-    @cards = HTTParty.get("https://api.scryfall.com/cards/search?q=lang:fr+#{params[:search]}")
+    @cards = ScryfallService.search(params[:search])
     @card = Card.new
   end
 
@@ -60,7 +60,7 @@ class CardsController < ApplicationController
   def create_card
     @card = Card.new(card_params)
     @card.user = current_user
-    @card_price = HTTParty.get("https://api.scryfall.com/cards/named?exact=#{card_params[:name]}")
+    @card_price = ScryfallService.card_price(card_params[:name])
 
     if @card_price['prices']['eur'].present?
       @card.price = @card_price['prices']['eur']

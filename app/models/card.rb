@@ -33,6 +33,6 @@ class Card < ApplicationRecord
   end
 
   def self.exists_by_name_and_user?(name, user_id)
-    Card.exists?(name: name, user_id: user_id)
+    Card.exists?(name:, user_id:)
   end
 end

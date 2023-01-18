@@ -8,10 +8,7 @@ class PublicController < ApplicationController
   def terms; end
 
   def random
-    url = 'https://api.scryfall.com/cards/random?q=lang:fr'
-    uri = URI(url)
-    res = Net::HTTP.get_response(uri)
-    @card = JSON.parse(res.body)
+    @card = ScryfallService.random
   end
 
   def construction; end

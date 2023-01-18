@@ -12,4 +12,8 @@ class ScryfallService < ApplicationRecord
   def self.card_price(name)
     get("/cards/named?exact=#{name}")
   end
+
+  def self.random
+    get('/cards/random?q=lang:fr')
+  end
 end

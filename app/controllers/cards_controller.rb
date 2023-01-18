@@ -10,8 +10,8 @@ class CardsController < ApplicationController
   def index
     @user = current_user
     @cards = Card.where(user_id: @user.id)
-    @sorted_cards = Card.sorted_by_color(@user.id)
-    @total_price = @cards.sum(&:total_price)
+    @sorted_cards = Card.sorted_by_color(@user.id) # Show cards sorted by color
+    @total_price = @cards.sum(&:total_price) # Calculates the total price of the cards
   end
 
   # GET /cards/1 or /cards/1.json
@@ -52,22 +52,35 @@ class CardsController < ApplicationController
     @cards = Card.where(user_id: @user.id)
   end
 
+  def save_card
+    @card = find_or_initialize_card # Finds or initializes a card given its name and the current user
+    set_card_attributes
+    set_card_price # Set the price of the card using the ScryfallService model
+    increment_card_quantity
+    flash_notice_and_redirect if @card.save
+  end
+
   private
 
-  def save_card
-    @card = Card.find_or_initialize_by(name: card_params[:name], user_id: current_user.id)
+  def find_or_initialize_card
+    Card.find_or_initialize_by(name: card_params[:name], user_id: current_user.id)
+  end
+
+  def set_card_attributes
     @card.attributes = card_params
     @card.user = current_user
-    @card_price = ScryfallService.card_price(card_params[:name])
+  end
 
-    if @card_price['prices']['eur'].present?
-      @card.price = @card_price['prices']['eur']
-    elsif @card_price['prices']['eur_foil'].present?
-      @card.price = @card_price['prices']['eur_foil']
-    end
+  def set_card_price
+    @card_price = ScryfallService.card_price(card_params[:name]) # Get card price using ScryfallService
+    @card.price = @card_price['prices']['eur'] || @card_price['prices']['eur_foil'] # Set the price of the card using either eur or eur_foil
+  end
 
+  def increment_card_quantity
     @card.quantity += 1
-    @card.save
+  end
+
+  def flash_notice_and_redirect
     flash[:notice] = 'Carte ajoutée à votre collection!'
     redirect_to new_card_path
   end
@@ -90,7 +103,8 @@ class CardsController < ApplicationController
                                  :color_identity)
   end
 
-  # This method allows you to retrieve the search parameters
+  # This method allows you to retrieve the search parameters, and to capitalize the first letter of each word
+  # It also allows you to display a flash message if the user enters less than 3 characters
   def search_params
     params[:search] = if params[:search].present? && params[:search].length >= 3
                         [params[:search]].flatten.join.unicode_normalize(:nfkd).chars.reject do |c|

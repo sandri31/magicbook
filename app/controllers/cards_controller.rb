@@ -29,9 +29,9 @@ class CardsController < ApplicationController
   # POST /cards or /cards.json
   def create
     if Card.exists_by_name_and_user?(card_params[:name], current_user.id)
-      update_card
+      save_card
     else
-      create_card
+      save_card
     end
   end
 
@@ -54,8 +54,9 @@ class CardsController < ApplicationController
 
   private
 
-  def create_card
-    @card = Card.new(card_params)
+  def save_card
+    @card = Card.find_or_initialize_by(name: card_params[:name], user_id: current_user.id)
+    @card.attributes = card_params
     @card.user = current_user
     @card_price = ScryfallService.card_price(card_params[:name])
 
@@ -65,14 +66,6 @@ class CardsController < ApplicationController
       @card.price = @card_price['prices']['eur_foil']
     end
 
-    @card.quantity += 1
-    @card.save
-    flash[:notice] = 'Carte ajoutée à votre collection!'
-    redirect_to new_card_path
-  end
-
-  def update_card
-    @card = Card.where(name: card_params[:name], user_id: current_user.id).first
     @card.quantity += 1
     @card.save
     flash[:notice] = 'Carte ajoutée à votre collection!'

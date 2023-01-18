@@ -21,6 +21,18 @@ class Card < ApplicationRecord
                             .where.not(color_identity: 'R').where.not(color_identity: 'G').where.not(color_identity: '')
                      }
 
+  def self.sorted_by_color(user_id)
+    {
+      white: Card.white.where(user_id:),
+      blue: Card.blue.where(user_id:),
+      black: Card.black.where(user_id:),
+      red: Card.red.where(user_id:),
+      green: Card.green.where(user_id:),
+      colorless: Card.colorless.where(user_id:),
+      multicolor: Card.multicolor.where(user_id:)
+    }
+  end
+
   def total_price
     price * quantity
   end

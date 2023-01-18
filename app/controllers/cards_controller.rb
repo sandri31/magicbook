@@ -11,14 +11,8 @@ class CardsController < ApplicationController
     @user = current_user
     @cards = Card.where(user_id: @user.id)
 
-    # Sort the cards by name
-    @white_card =      Card.white.where(user_id: @user.id)
-    @blue_card =       Card.blue.where(user_id: @user.id)
-    @black_card =      Card.black.where(user_id: @user.id)
-    @red_card =        Card.red.where(user_id: @user.id)
-    @green_card =      Card.green.where(user_id: @user.id)
-    @colorless_card =  Card.colorless.where(user_id: @user.id)
-    @multicolor_card = Card.multicolor.where(user_id: @user.id)
+    # Sort the cards by color
+    @sorted_cards = Card.sorted_by_color(@user.id)
 
     @total_price = @cards.sum(&:total_price)
   end

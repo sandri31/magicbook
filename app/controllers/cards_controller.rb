@@ -37,7 +37,7 @@ class CardsController < ApplicationController
 
   # POST /cards or /cards.json
   def create
-    if Card.where(name: card_params[:name], user_id: current_user.id).present?
+    if Card.exists_by_name_and_user?(card_params[:name], current_user.id)
       update_card
     else
       create_card

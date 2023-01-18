@@ -10,10 +10,7 @@ class CardsController < ApplicationController
   def index
     @user = current_user
     @cards = Card.where(user_id: @user.id)
-
-    # Sort the cards by color
     @sorted_cards = Card.sorted_by_color(@user.id)
-
     @total_price = @cards.sum(&:total_price)
   end
 

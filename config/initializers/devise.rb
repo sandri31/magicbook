@@ -30,12 +30,11 @@ Devise.setup do |config|
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '31aa0cece08cc72928e576fd8c3b544b5d5204fd86c683fa30303ff1422828df04f18325a011912879b75e5e46e4aa3ae3c4ee01372638f1820a2d76dabc0ed1'
 
-  config.parent_controller = "TurboDeviseController"
+  config.parent_controller = 'TurboDeviseController'
   config.navigational_formats = ['*/*', :html, :turbo_stream]
   config.warden do |manager|
     manager.failure_app = TurboFailureApp
   end
-
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -45,7 +44,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = ENV['EMAIL_USERNAME']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

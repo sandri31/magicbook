@@ -23,6 +23,7 @@ gem 'sassc-rails'
 gem 'devise'
 gem 'httparty'
 gem 'mail_form'
+gem "rails_12factor"
 gem 'rspec-rails'
 
 group :development, :test do

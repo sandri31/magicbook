@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: magicbook_production
   username: magicbook
   password: <%= ENV["MAGICBOOK_DATABASE_PASSWORD"] %>

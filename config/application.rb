@@ -14,7 +14,7 @@ module Magicbook
     config.load_defaults 7.0
 
     # Set the new domain name as the base URL for the app
-    config.action_controller.default_url_options = { host: 'repairemagic.fr' }
+    config.action_controller.default_url_options = { host: ENV['HOSTNAME'] }
 
     config.i18n.available_locales = %i[en fr]
 

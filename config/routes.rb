@@ -13,5 +13,5 @@ Rails.application.routes.draw do
   root 'public#index'
   get 'random', to: 'public#random'
   get 'contact', to: 'contacts#new', as: 'contact'
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: %i[new create]
 end

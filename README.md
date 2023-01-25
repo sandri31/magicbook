@@ -66,7 +66,7 @@ Ou bien, faire une simple recherche de cartes et/ou voir une des plus de 70 000 
 
 Le site est actualisé régulièrement, et les cartes sont ajoutées au fur et à mesure.
 Vous pouvez voir le site en production :
-  - Rendez-vous sur ce lien : [MagicBook](https://lerepairedebolas.herokuapp.com/)
+  - Rendez-vous sur ce lien : [MagicBook](https://www.repairemagic.fr/)
   - Enjoy !
 
 ## Licence

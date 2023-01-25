@@ -1,0 +1,4 @@
+<%= turbo_stream_from do %>
+  <%= turbo_stream_update("total-price", "replace", @total_price) %>
+  <%= turbo_stream_update("total-quantity", "replace", @total_quantity) %>
+<% end %>

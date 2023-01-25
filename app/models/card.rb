@@ -8,8 +8,12 @@ class Card < ApplicationRecord
   validates :user_id, presence: true
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :printed_name, presence: true, uniqueness: { scope: :user_id }
+  validates :quantity, numericality: { greater_than_or_equal_to: 1 }
+
+  before_save :default_quantity
   delegate :total_price, to: :cards, prefix: true
 
+  scope :by_user, ->(user_id) { where(user_id:) }
   scope :white, -> { where(color_identity: 'W') }
   scope :blue, -> { where(color_identity: 'U') }
   scope :black, -> { where(color_identity: 'B') }
@@ -20,6 +24,10 @@ class Card < ApplicationRecord
                        where.not(color_identity: 'W').where.not(color_identity: 'U').where.not(color_identity: 'B')
                             .where.not(color_identity: 'R').where.not(color_identity: 'G').where.not(color_identity: '')
                      }
+
+  def self.total_price(user_id)
+    by_user(user_id).sum(:price)
+  end
 
   def self.sorted_by_color(user_id)
     {
@@ -33,10 +41,6 @@ class Card < ApplicationRecord
     }
   end
 
-  def total_price
-    price * quantity
-  end
-
   # If the quantity is 0, we destroy the card
   def destroy_if_quantity_is_zero
     return unless quantity <= 0
@@ -46,5 +50,11 @@ class Card < ApplicationRecord
 
   def self.exists_by_name_and_user?(name, user_id)
     Card.exists?(name:, user_id:)
+  end
+
+  private
+
+  def default_quantity
+    self.quantity = 1 if quantity.nil? || quantity < 1
   end
 end

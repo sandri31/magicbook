@@ -11,7 +11,6 @@ class CardsController < ApplicationController
     @user = current_user
     @cards = Card.where(user_id: @user.id)
     @sorted_cards = Card.sorted_by_color(@user.id) # Show cards sorted by color
-    @total_price = @cards.sum(&:total_price) # Calculates the total price of the cards
   end
 
   # GET /cards/1 or /cards/1.json
@@ -38,8 +37,14 @@ class CardsController < ApplicationController
   # PATCH/PUT /cards/1 or /cards/1.json
   def update
     @card.update(card_params)
-    @card.destroy_if_quantity_is_zero
-    redirect_to cards_path
+    respond_to do |format|
+      format.html { redirect_to cards_path }
+      format.js do
+        @total_price = Card.total_price(current_user.id)
+        @total_quantity = Card.total_quantity(current_user.id)
+        render stream: true
+      end
+    end
   end
 
   # DELETE /cards/1 or /cards/1.json

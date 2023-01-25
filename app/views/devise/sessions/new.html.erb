@@ -1,13 +1,6 @@
 <div class="row align-items-center mx-auto g-lg-5 py-5">
   <div class="col-12 col-md-10 mx-auto col-lg-5 p-4 p-md-5 card" style="margin-top: 200px;">
-
     <h2 class="mb-4">Connexion</h2>
-    <p>Pour tester le site, vous pouvez vous connecter avec les identifiants suivants:</p>
-    <h6 class="mb-4">
-      Pseudo: <mark><strong><span class="pb-3 background-gradient">Repaire</span></strong></mark>,
-      Mot de passe: <mark><strong><span class="pb-3 background-gradient">azerty</span></strong></mark>
-    </h6>
-
     <%= form_for(resource, as: resource_name, url: user_session_url, data: { turbo: false }) do |f| %>
       <div class="form-group mb-3">
         <%= f.label :pseudo_ou_email %><br />

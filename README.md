@@ -18,13 +18,13 @@
 
 ## Aperçu du projet
 
-Dans ce projet m'a permis de répondre à une problématique que j'ai rencontré, et qui m'a poussé à le développer.
-La problématique est la suivante : "Comment estimer la valeur de ma collection de cartes Magic The Gathering ?".
-Ayant trouvé aucune solution, j'ai décidé de me lancer dans ce projet.
+Ce projet m'a permis de répondre à une problématique que j'ai rencontré, et qui m'a poussé à le développer.  
+La problématique est la suivante : "Comment estimer la valeur de ma collection de cartes Magic The Gathering ?".  
+Ayant trouvé aucune solution, j'ai décidé de me lancer dans ce projet.  
 Le but était ici de développer un système tout entier, qui permette de gérer sa propre collection de cartes Magic The Gathering, et de pouvoir voir l'estimation de celle-ci.
 
-Ce projet est développé en Ruby on Rails pour le back-end, et utilise l'API REST de [Scryfall](https://scryfall.com/).
-J'utilise également Bootstrap pour le front-end, et la gem Devise pour la gestion des utilisateurs.
+Ce projet est développé en Ruby on Rails pour le back-end, et utilise l'API REST de [Scryfall](https://scryfall.com/).  
+J'utilise également Bootstrap pour le front-end, et la gem Devise pour la gestion des utilisateurs.  
 Pour la base de données, j'utilise PostgreSQL.
 
 ![ScreenMagic2](https://user-images.githubusercontent.com/85675011/198518404-3ec8a18e-a9c3-4805-8c62-c987d0e0cfa9.png)

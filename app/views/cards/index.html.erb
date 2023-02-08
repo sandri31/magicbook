@@ -8,7 +8,7 @@
 <% end %><!-- End Header condition -->
 
 <!-- ======= Collection Page ======= -->
-<div class="container text-center" style="margin-top: 150px;">
+<div class="container text-center">
   <h1 class="text-center display-2 mb-3">Ta propre <span class="pb-3 background-gradient">collection Magic est ici</span></h1>
   <h4 class="lead"><strong>Actuellement tu as <%= @cards.sum(:quantity) %> cartes dans ta collection.<br />
                       Avec un total de <%= @cards.pluck(:printed_name).uniq.count %> cartes uniques.</strong>

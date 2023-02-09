@@ -52,6 +52,13 @@ table tbody tr td form .form-control {
 #modal {
   overflow: hidden;
 }
+.card-img-top {
+  height: 430px;
+}
+.modal-body .card-img-top {
+  width: 100%;
+  height: auto;
+}
 
 /*--------------------------------------------------------------
 # Page specific styles construction

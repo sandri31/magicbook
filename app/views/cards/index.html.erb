@@ -19,10 +19,11 @@
 
   <!-- ======= White ======= -->
   <% if @sorted_cards[:white].sum(:quantity) > 0 %>
+    <!-- Je souhaite avoir le bouton un peu plus large que le tableau -->
     <a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
       <p class="h1">Blanc (<%= @sorted_cards[:white].sum(:quantity) %>)</p>
     </a>
-    <div class="table-responsive">
+    <div class="container table-responsive-sm">
       <table class="table table-dark table-hover">
         <thead>
           <tr>
@@ -56,7 +57,7 @@
     <a class="container-fluid bg-primary text-center text-white p-3 btn btn-primary mt-2" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
       <p class="h1">Bleu (<%= @sorted_cards[:blue].sum(:quantity) %>)</p>
     </a>
-    <div class="table-responsive">
+    <div class="container table-responsive-sm">
       <table class="table table-dark table-hover">
         <thead>
           <tr>
@@ -90,7 +91,7 @@
     <a class="container-fluid bg-dark text-center text-white p-3 btn btn-dark mt-2" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
       <p class="h1">Noir (<%= @sorted_cards[:black].sum(:quantity) %>)</p>
     </a>
-    <div class="table-responsive">
+    <div class="container table-responsive-sm">
       <table class="table table-dark table-hover">
         <thead>
           <tr>
@@ -124,7 +125,7 @@
     <a class="container-fluid bg-danger text-center text-white p-3 btn btn-danger mt-2" id="scrollButtonRed" href="#scrollButtonRed" role="button">
       <p class="h1">Rouge (<%= @sorted_cards[:red].sum(:quantity) %>)</p>
     </a>
-    <div class="table-responsive">
+    <div class="container table-responsive-sm">
       <table class="table table-dark table-hover">
         <thead>
           <tr>
@@ -158,7 +159,7 @@
     <a class="container-fluid bg-success text-center text-white p-3 btn btn-success mt-2" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
       <p class="h1">Vert (<%= @sorted_cards[:green].sum(:quantity) %>)</p>
     </a>
-    <div class="table-responsive">
+    <div class="container table-responsive-sm">
       <table class="table table-dark table-hover">
         <thead>
           <tr>
@@ -192,7 +193,7 @@
     <a class="container-fluid bg-warning text-center text-black p-3 btn btn-warning mt-2" id="scrollButtonMulticolor" href="#scrollButtonMulticolor" role="button">
       <p class="h1">Multicolore (<%= @sorted_cards[:multicolor].sum(:quantity) %>)</p>
     </a>
-    <div class="table-responsive">
+    <div class="container table-responsive-sm">
       <table class="table table-dark table-hover">
         <thead>
           <tr>
@@ -226,7 +227,7 @@
     <a class="container-fluid bg-secondary text-center text-white p-3 btn btn-secondary mt-2" id="scrollButtonColorless" href="#scrollButtonColorless" role="button">
       <p class="h1">Incolore (<%= @sorted_cards[:colorless].sum(:quantity) %>)</p>
     </a>
-    <div class="table-responsive">
+    <div class="container table-responsive-sm">
       <table class="table table-dark table-hover">
         <thead>
           <tr>

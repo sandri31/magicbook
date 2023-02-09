@@ -19,7 +19,6 @@
 
   <!-- ======= White ======= -->
   <% if @sorted_cards[:white].sum(:quantity) > 0 %>
-    <!-- Je souhaite avoir le bouton un peu plus large que le tableau -->
     <a class="container-fluid bg-light text-center text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
       <p class="h1">Blanc (<%= @sorted_cards[:white].sum(:quantity) %>)</p>
     </a>

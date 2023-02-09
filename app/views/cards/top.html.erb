@@ -17,7 +17,7 @@
 
   <!-- ======= Top White ======= -->
   <% if @user.cards.where(color_identity: "W") == [] %>
-    <div class="container text-center"></div>
+    <div class="container"></div>
   <% else %>
     <a class="box-white container-fluid bg-light text-black p-3 btn btn-light" id="scrollButtonWhite" href="#scrollButtonWhite" role="button">
       <h2 class="h1">Top 10 des cartes blanches</h2>
@@ -55,7 +55,7 @@
 
   <!-- ======= Top Blue ======= -->
   <% if @user.cards.where(color_identity: "U") == [] %>
-    <div class="container text-center"></div>
+    <div class="container"></div>
   <% else %>
     <a class="box-blue container-fluid bg-primary text-white p-3 btn btn-primary" id="scrollButtonBlue" href="#scrollButtonBlue" role="button">
       <h2 class="h1">Top 10 des cartes bleues</h2>
@@ -93,7 +93,7 @@
 
   <!-- ======= Top Black ======= -->
   <% if @user.cards.where(color_identity: "B") == [] %>
-    <div class="container text-center"></div>
+    <div class="container"></div>
   <% else %>
     <a class="box-black container-fluid bg-dark text-white p-3 btn btn-dark" id="scrollButtonBlack" href="#scrollButtonBlack" role="button">
       <h2 class="h1">Top 10 des cartes noires</h2>
@@ -131,7 +131,7 @@
 
   <!-- ======= Top Red ======= -->
   <% if @user.cards.where(color_identity: "R") == [] %>
-    <div class="container text-center"></div>
+    <div class="container"></div>
   <% else %>
     <a class="box-red container-fluid bg-danger text-white p-3 btn btn-danger" id="scrollButtonRed" href="#scrollButtonRed" role="button">
       <h2 class="h1">Top 10 des cartes rouges</h2>
@@ -169,7 +169,7 @@
 
   <!-- ======= Top Green ======= -->
   <% if @user.cards.where(color_identity: "G") == [] %>
-    <div class="container text-center"></div>
+    <div class="container"></div>
   <% else %>
     <a class="box-green container-fluid bg-success text-white p-3 btn btn-success" id="scrollButtonGreen" href="#scrollButtonGreen" role="button">
       <h2 class="h1">Top 10 des cartes vertes</h2>
@@ -210,7 +210,7 @@
                                                               AND color_identity != 'B'
                                                               AND color_identity != 'R'
                                                               AND color_identity != 'G'") == [] %>
-    <div class="container text-center"></div>
+    <div class="container"></div>
   <% else %>
     <a class="box-multicolor container-fluid bg-warning text-black p-3 btn btn-warning" id="scrollButtonMulticolor" href="#scrollButtonMulticolor" role="button">
       <h2 class="h1">Top 10 des cartes multicolores</h2>
@@ -251,7 +251,7 @@
 
   <!-- ======= Top Colorless ======= -->
   <% if @user.cards.where(color_identity: "") == [] %>
-    <div class="container text-center"></div>
+    <div class="container"></div>
   <% else %>
     <a class="box-colorless container-fluid bg-secondary text-white p-3 btn btn-secondary" id="scrollButtonColorless" href="#scrollButtonColorless" role="button">
       <h2 class="h1">Top 10 des cartes incolore</h2>

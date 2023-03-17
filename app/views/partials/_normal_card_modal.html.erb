@@ -1,0 +1,17 @@
+<div class="modal fade" id="normalModalToggle<%= index %>" aria-hidden="true" aria-labelledby="normalModalToggleLabel<%= index %>" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="normalModalToggleLabel<%= index %>"><%= card["printed_name"] %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="<%= card["image_uris"]["normal"] %>" class="card-img-top" alt="<%= card["name"] %>">
+      </div>
+      <div class="modal-footer">
+        <%= render "partials/add_to_collection", card: card %>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

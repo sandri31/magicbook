@@ -1,0 +1,34 @@
+<!-- _transform_card_modal.html.erb -->
+<div class="modal fade" id="transformModalToggle<%= index %>" aria-hidden="true" aria-labelledby="transformModalToggleLabel<%= index %>" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="transformModalToggleLabel<%= index %>"><%= card["card_faces"][0]["printed_name"] %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="<%= card["card_faces"][0]["image_uris"]["normal"] %>" class="card-img-top">
+      </div>
+      <div class="modal-footer">
+        <%= render "partials/add_to_collection", card: card %>
+        <button class="btn btn-secondary" data-bs-target="#transformModalToggle2<%= index %>" data-bs-toggle="modal">Recto</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="transformModalToggle2<%= index %>" aria-hidden="true" aria-labelledby="transformModalToggleLabel2<%= index %>" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="transformModalToggleLabel2<%= index %>"><%= card["card_faces"][1]["printed_name"] %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="<%= card["card_faces"][1]["image_uris"]["normal"] %>" class="card-img-top">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-target="#transformModalToggle<%= index %>" data-bs-toggle="modal">Verso</button>
+      </div>
+    </div>
+  </div>
+</div>

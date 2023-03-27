@@ -3,20 +3,6 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.hosts << ENV['HOSTNAME']
-
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: 587,
-    user_name: ENV['EMAIL_USERNAME'],
-    password: ENV['SECRET_KEY'],
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
-
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
@@ -83,4 +69,25 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
+  # Set sender email address
+  config.action_mailer.delivery_method = :smtp
+  config.hosts << ENV['HOSTNAME']
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'repairemagic.fr',
+    authentication: 'plain',
+    enable_starttls_auto: true,
+    user_name: ENV.fetch('EMAIL_USERNAME'),
+    password: ENV.fetch('SECRET_KEY')
+  }
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :letter_opener
 end

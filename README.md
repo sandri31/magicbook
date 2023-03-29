@@ -90,10 +90,10 @@ Les tests sont en cours de développement.
 
 ## Faits
 
-🃏 Le projet permet de gérer une collection de cartes Magic The Gathering et de voir son estimation
-💻 Il est développé en Ruby on Rails avec l'API REST de Scryfall
-🎨 Le front-end utilise Bootstrap et la gestion des utilisateurs est assurée par Devise
-🛠️ Les prérequis sont Ruby '3.1.2' et Rails '7.0.3'
-🚀 Le site est actualisé régulièrement avec l'ajout de nouvelles cartes
-📝 Le projet est sous licence libre et les contributions sont les bienvenues
-🙏 Remerciements à [Coding Accelerator](https://joincodingnow.com/) pour son aide
+🃏 Le projet permet de gérer une collection de cartes Magic The Gathering et de voir son estimation  
+💻 Il est développé en Ruby on Rails avec l'API REST de Scryfall  
+🎨 Le front-end utilise Bootstrap et la gestion des utilisateurs est assurée par Devise  
+🛠️ Les prérequis sont Ruby '3.1.2' et Rails '7.0.3'  
+🚀 Le site est actualisé régulièrement avec l'ajout de nouvelles cartes  
+📝 Le projet est sous licence libre et les contributions sont les bienvenues  
+🙏 Remerciements à [Coding Accelerator](https://joincodingnow.com/) pour son aide  

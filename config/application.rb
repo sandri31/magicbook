@@ -22,10 +22,6 @@ module Magicbook
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
     config.i18n.default_locale = :fr
 
-    # Autoload the custom middleware
-    config.autoload_once_paths << Rails.root.join('lib')
-    config.middleware.use AllowedHosts
-
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

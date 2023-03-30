@@ -9,7 +9,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
 
-  config.hosts << /\.repairemagic\.fr\z/
+  # Remove this line since we're using the custom middleware
+  # config.hosts << /\.repairemagic\.fr\z/
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {

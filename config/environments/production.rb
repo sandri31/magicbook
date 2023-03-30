@@ -10,6 +10,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
 
   config.hosts << ENV['HOSTNAME']
+  config.hosts << ENV['ALIAS_HOSTNAME']
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {

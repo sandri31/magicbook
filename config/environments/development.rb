@@ -73,18 +73,16 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
   # Set sender email address
-  config.action_mailer.delivery_method = :smtp
   config.hosts << ENV['HOSTNAME']
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: 'repairemagic.fr',
+    user_name: ENV['EMAIL_USERNAME'],
+    password: ENV['SECRET_KEY'],
     authentication: 'plain',
-    enable_starttls_auto: true,
-    user_name: ENV.fetch('EMAIL_USERNAME'),
-    password: ENV.fetch('SECRET_KEY')
+    enable_starttls_auto: true
   }
 
   config.action_mailer.perform_deliveries = true

@@ -7,8 +7,8 @@ Rails.application.configure do
 
   # Set senders email address
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: '.repairemagic.fr' }
-  config.hosts << '.repairemagic.fr'
+  config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
+  config.hosts << ENV['HOSTNAME']
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {

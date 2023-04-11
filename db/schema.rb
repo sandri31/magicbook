@@ -26,7 +26,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_105939) do
     t.string "printed_name"
     t.string "color_identity"
     t.decimal "price_total", precision: 8, scale: 2
-    t.string "color"
   end
 
   create_table "scryfall_services", force: :cascade do |t|

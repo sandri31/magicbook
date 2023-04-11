@@ -8,17 +8,19 @@ Rails.application.configure do
   # Set senders email address
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
+  
+  config.secret_key_base = ENV['SECRET_KEY_BASE']
   config.hosts << ENV['HOSTNAME']
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    domain: ENV['HOSTNAME'],
+    address: 'smtp.sendgrid.net',
     port: 587,
-    user_name: ENV['EMAIL_USERNAME'],
-    password: ENV['SECRET_KEY'],
+    domain: ENV['HOSTNAME'],
     authentication: 'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    user_name: 'apikey',
+    password: ENV['SENDGRID_API_KEY']
   }
 
   # Code is not reloaded between requests.

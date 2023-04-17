@@ -5,22 +5,22 @@ require 'active_support/core_ext/integer/time'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # Set senders email address
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: ENV['HOSTNAME'] }
-  
-  config.secret_key_base = ENV['SECRET_KEY_BASE']
-  config.hosts << ENV['HOSTNAME']
-
-  # SMTP settings for gmail
+  config.action_mailer.default_options = {
+    'X-PM-Message-Stream': 'outbound'
+    # from: ENV['MAILER_FROM']
+  }
+  config.action_mailer.default_url_options = { host: ENV['RAILS_DEFAULT_URL'] }
   config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
+    address: 'smtp.postmarkapp.com', # or the SMTP server you want to use
     port: 587,
-    domain: ENV['HOSTNAME'],
+    domain: ENV['RAILS_DEFAULT_URL'],
+    user_name: ENV['POSTMARK_USER_NAME'],
+    password: ENV['POSTMARK_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true,
-    user_name: 'apikey',
-    password: ENV['SENDGRID_API_KEY']
+    open_timeout: 5,
+    read_timeout: 5
   }
 
   # Code is not reloaded between requests.

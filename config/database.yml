@@ -81,7 +81,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  url: <%= ENV["DATABASE_URL"] %> # for railway.app deployment
   database: magicbook_production
   username: magicbook
   password: <%= ENV["MAGICBOOK_DATABASE_PASSWORD"] %>

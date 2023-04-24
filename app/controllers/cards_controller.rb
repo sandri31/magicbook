@@ -107,15 +107,28 @@ class CardsController < ApplicationController
   # It also allows you to display a flash message if the user enters less than 3 characters
   def search_params
     params[:search] = if params[:search].present? && params[:search].length >= 3
-                        [params[:search]].flatten.join.unicode_normalize(:nfkd).chars.reject do |c|
-                          c =~ /[\u02B0-\u02FF\u0300-\u036F]/
-                        end.join.capitalize
+                        remove_special_characters
                       elsif params[:search].present? && params[:search].length < 3
-                        flash[:alert] = 'Veuillez renseigner au moins 3 caractères pour la recherche'
-                        redirect_to new_card_path
+                        too_short
                       else
-                        params[:search] = %w[Chandra Nissa Jace Gideon Liliana Ajani Sorin Nicol Tezzeret
-                                             Ugin Ashiok Kaya Samut Defaite Sarkhan].sample
+                        random_planeswalker_card
                       end
+  end
+
+  def too_short
+    flash[:alert] = 'Veuillez renseigner au moins 3 caractères pour la recherche'
+    redirect_to new_card_path
+  end
+
+  def random_planeswalker_card
+    %w[Chandra Nissa Jace Gideon Liliana Ajani Sorin Nicol Tezzeret
+       Ugin Karn Garruk Vraska Kaya Tibalt].sample
+  end
+
+  # Remove accents from the search parameter
+  def remove_special_characters
+    [params[:search]].flatten.join.unicode_normalize(:nfkd).chars.reject do |c|
+      c =~ /[\u02B0-\u02FF\u0300-\u036F]/
+    end.join.capitalize
   end
 end

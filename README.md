@@ -12,7 +12,6 @@
 - [Installation](#installation)
   - [Utilisation](#utilisation)
   - [Licence](#licence)
-  - [Contribution](#contribution)
 - [Tests](#tests)
 - [Faits](#faits)
 
@@ -43,7 +42,7 @@ Il faut cloner le projet sur votre machine,
 et installer les gems nécessaires au projet.
 
 ```bash
-git clone git@github.com:Symitsh/magicbook.git
+git clone git@github.com:sandri31/magicbook-V0.git
 bundle install
 ```
 
@@ -62,7 +61,7 @@ rails server
 
 ## Utilisation
 
-Vous avez la possibilité de créer un compte utilisateur, de vous connecter et d'ajouter des cartes à votre collection de cartes Magic The Gathering (en cours de développement).
+Vous avez la possibilité de créer un compte utilisateur, de vous connecter et d'ajouter des cartes à votre collection de cartes Magic The Gathering.
 Et ainsi avoir une estimation en détail de votre propre collection de cartes.
 
 Ou bien, faire une simple recherche de cartes et/ou voir une des plus de 70 000 cartes Magic The Gathering au hasard. Juste pour le fun.
@@ -78,11 +77,6 @@ Vous pouvez voir le site en production :
 
 Vous pouvez utiliser ce projet comme bon vous semble, mais n'oubliez pas mettre une "stars" sur mon projet pour me donner un petit coup de pouce.
 Et pourquoi pas, me faire un petit retour, ça me ferait plaisir.
-
-## Contribution
-
-Les contributions sont les bienvenues.
-Pour des modifications majeures, merci de me contacter avant de commencer à travailler dessus.
 
 ## Tests
 
